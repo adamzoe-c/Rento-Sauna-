@@ -27,28 +27,45 @@
         .sidebar-close { position: absolute; top: 30px; right: 30px; font-size: 1.5rem; cursor: pointer; font-family: 'Montserrat'; font-weight: 200; }
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.05); z-index: 2000; display: none; backdrop-filter: blur(2px); }
         .sidebar-overlay.active { display: block; }
+        
+        /* Expanded Menu Style */
         .side-cat { font-family: 'Montserrat'; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 30px 0 15px; cursor: pointer; display: flex; justify-content: space-between; text-decoration: none; color: inherit; }
-        .side-sub { font-family: 'Cormorant Garamond'; font-size: 1.1rem; font-style: italic; color: #666; text-decoration: none; display: block; margin-bottom: 15px; padding-left: 10px; cursor: pointer; }
-        .nested-links { padding-left: 20px; margin-bottom: 20px; display: none; border-left: 1px solid #eee; }
-        .nested-links.open { display: block; }
+        .side-sub { font-family: 'Cormorant Garamond'; font-size: 1.1rem; font-style: italic; color: #333; text-decoration: none; display: block; margin-bottom: 15px; padding-left: 10px; cursor: pointer; }
+        .nested-links { padding-left: 20px; margin-bottom: 20px; display: block; border-left: 1px solid #eee; }
 
-        /* --- HERO --- */
+        /* --- HERO & VIDEO INDICATORS --- */
         .hero { height: 80vh; margin-top: 100px; width: 100%; background: #000; position: relative; overflow: hidden; }
         #heroVideo { width: 100%; height: 100%; object-fit: cover; transition: opacity 1s ease-in-out; }
+        
+        .video-dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 10; }
+        .v-dot { width: 8px; height: 8px; border: 1px solid #fff; border-radius: 50%; transition: 0.4s; opacity: 0.6; cursor: pointer; }
+        .v-dot.active { background: #fff; width: 24px; border-radius: 10px; opacity: 1; }
 
         .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; text-align: center; }
-        .section-title { padding: 100px 0 50px; font-family: 'Montserrat'; font-weight: 200; letter-spacing: 8px; text-transform: uppercase; font-size: 0.8rem; }
+
+
+.section-title { padding: 100px 0 50px; font-family: 'Montserrat'; font-weight: 200; letter-spacing: 8px; text-transform: uppercase; font-size: 0.8rem; }
         
         .harmony-wrap { max-width: 850px; margin: 80px auto; }
         .harmony-headline { font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
         .harmony-text { font-style: italic; font-size: 1.6rem; color: #333; line-height: 1.8; }
 
-/* NEW ARRIVALS */
+        /* --- LUXURY NEW ARRIVALS --- */
         .arrival-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-bottom: 80px; }
-        .arrival-card { text-decoration: none; color: inherit; display: block; }
-        .arrival-card img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: #fcfcfc; margin-bottom: 15px; transition: 0.4s; }
-        .arrival-card:hover img { opacity: 0.7; }
-        .arrival-card span { font-family: 'Montserrat'; font-size: 0.55rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; border-bottom: 1px solid #eee; padding-bottom: 8px; margin-bottom: 10px; }
+        .arrival-card { text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; }
+        .arrival-img-container { width: 100%; aspect-ratio: 1/1; overflow: hidden; background: #fcfcfc; margin-bottom: 15px; position: relative; }
+        .arrival-card img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        .arrival-card span { font-family: 'Montserrat'; font-size: 0.55rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; padding-bottom: 8px; transition: 0.3s; }
+        
+        /* The Luxury Hover Effect Updated */
+        .arrival-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.15); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
+        .arrival-overlay em { font-family: 'Montserrat'; font-style: normal; text-transform: uppercase; letter-spacing: 2px; color: #000; font-size: 0.65rem; background: #fff; padding: 12px 25px; transform: translateY(15px); transition: 0.4s; }
+        
+        .arrival-card:hover img { transform: scale(1.08); }
+        .arrival-card:hover .arrival-overlay { opacity: 1; }
+        .arrival-card:hover .arrival-overlay em { transform: translateY(0); }
+        .arrival-card:hover span { letter-spacing: 2.5px; color: var(--gold); }
 
         /* BADGE LINE */
         .badge-row { display: flex; justify-content: center; gap: 80px; margin-bottom: 100px; }
@@ -74,15 +91,17 @@
             font-style: italic; 
             text-transform: capitalize; 
             letter-spacing: 1px; 
-            padding: 15px 50px; 
-            border: 1px solid var(--black); 
+            padding: 15px 50px;
+
+
+border: 1px solid var(--black); 
             background: transparent; 
             color: var(--black);
             transition: 0.3s ease; 
             cursor: pointer; 
+            text-decoration: none;
         }
         .lux-btn:hover { background: var(--black); color: var(--white); }
-        .lux-btn:active { background: var(--accent); border-color: var(--accent); color: var(--white); }
 
         .coll-arrow { position: absolute; top: 190px; width: 60px; height: 100px; z-index: 10; cursor: pointer; display: flex; align-items: center; justify-content: center; transform: translateY(-50%); border: none; }
         .arrow-left { left: 0; background: var(--accent); }
@@ -99,9 +118,10 @@
         .news-article h4 { font-family: 'Cormorant Garamond'; font-size: 1.3rem; margin-bottom: 10px; font-weight: 400; }
         .news-excerpt { font-size: 1rem; color: #666; font-style: italic; line-height: 1.5; }
 
-.pagination { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 60px 0; }
-        .p-btn { cursor: pointer; font-family: 'Montserrat'; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #888; }
-        .p-num { border: 1px solid #ddd; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: 'Montserrat'; font-size: 0.8rem; }
+        /* PAGINATION MOBILE OPTIMIZATION */
+        .pagination { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 60px 0; flex-wrap: wrap; }
+        .p-btn { cursor: pointer; font-family: 'Montserrat'; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #888; padding: 10px; }
+        .p-num { border: 1px solid #ddd; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: 'Montserrat'; font-size: 0.8rem; margin: 2px; }
         .p-num.active { background: var(--black); color: var(--white); border-color: var(--black); }
 
         /* PARTNERS SECTION */
@@ -128,20 +148,20 @@
             .collection-item { flex: 0 0 calc(50% - 15px); }
         }
 
-        @media (max-width: 768px) { 
-            .arrival-grid, .ritual-grid { grid-template-columns: repeat(3, 1fr); } 
+        @media (max-width: 768px) {
+
+
+.arrival-grid { grid-template-columns: repeat(2, 1fr); } 
+            .ritual-grid { grid-template-columns: repeat(3, 1fr); } 
             .footer-grid { grid-template-columns: 1fr; } 
             .sidebar { width: 100%; left: -100%; }
-            
-            /* Request 1: Badge labels under each other */
             .badge-row { flex-direction: column; gap: 40px; align-items: center; }
-
-            /* Request 2: Collection Fix - Show 1 item at a time with better height */
             .collection-item { flex: 0 0 100%; min-width: 100%; }
-            .coll-img { height: 300px; } /* More balanced than 380px for mobile */
-
-            /* Request 3: News articles stacked */
+            .coll-img { height: 300px; }
             .article-grid { grid-template-columns: 1fr; }
+            .pagination { gap: 5px; }
+            .p-num { width: 35px; height: 35px; font-size: 0.7rem; }
+            .p-btn { font-size: 0.6rem; letter-spacing: 1px; }
         }
     </style>
 </head>
@@ -159,31 +179,29 @@
 <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 <nav class="sidebar" id="sidebar">
     <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
-    <div class="side-cat" onclick="toggleDrop('p-drop')">Products <span>+</span></div>
+    <div class="side-cat">Products</div>
     <div id="p-drop" class="nested-links">
         <a href="harri-koskinen.html" class="side-sub">Rento × Harri Koskinen</a>
-        <div class="side-sub" onclick="toggleDrop('bl-drop')">Buckets and Ladles +</div>
-        <div id="bl-drop" class="nested-links">
+        <div class="side-sub">Buckets and Ladles</div>
+        <div class="nested-links">
             <a href="ladles.html" class="side-sub">Ladles</a>
             <a href="sets.html" class="side-sub">Sets</a>
         </div>
-
-
-<a href="thermometers.html" class="side-sub">Thermometers</a>
-        <div class="side-sub" onclick="toggleDrop('tx-drop')">Textiles +</div>
-        <div id="tx-drop" class="nested-links">
-            <a href="textiles.html" class="side-sub">Bath Robe</a>
+        <a href="thermometers.html" class="side-sub">Thermometers</a>
+        <div class="side-sub">Textiles</div>
+        <div class="nested-links">
+            <a href="bathrobes.html" class="side-sub">Bath Robe</a>
             <a href="seatcovers.html" class="side-sub">Seat Covers</a>
             <a href="towels.html" class="side-sub">Towels</a>
             <a href="pillows.html" class="side-sub">Sauna Pillows</a>
         </div>
-        <div class="side-sub" onclick="toggleDrop('acc-drop')">Accessories +</div>
-        <div id="acc-drop" class="nested-links">
+        <div class="side-sub">Accessories</div>
+        <div class="nested-links">
             <a href="washing.html" class="side-sub">Washing Accessories</a>
             <a href="whisks.html" class="side-sub">Whisks</a>
         </div>
-        <div class="side-sub" onclick="toggleDrop('cos-drop')">Cosmetics +</div>
-        <div id="cos-drop" class="nested-links">
+        <div class="side-sub">Cosmetics</div>
+        <div class="nested-links">
             <a href="hair.html" class="side-sub">Hair</a>
             <a href="skincare.html" class="side-sub">Skincare</a>
         </div>
@@ -197,21 +215,61 @@
         <video id="heroVideo" autoplay muted playsinline>
             <source src="Vid1.mp4" type="video/mp4">
         </video>
+        <div class="video-dots">
+            <div class="v-dot active" id="dot0" onclick="setVideo(0)"></div>
+            <div class="v-dot" id="dot1" onclick="setVideo(1)"></div>
+            <div class="v-dot" id="dot2" onclick="setVideo(2)"></div>
+        </div>
     </section>
 
     <div class="container">
         <h2 class="section-title">New Arrivals</h2>
         <div class="arrival-grid">
-            <a href="product.html" class="arrival-card"><img src="A1.jpg"><span>Peat Mask 200 ml</span></a>
-            <a href="product.html" class="arrival-card"><img src="A2.jpg"><span>Sauna Ice 30</span></a>
-            <a href="product.html" class="arrival-card"><img src="A3.jpg"><span>Blueberry 200 ml </span></a>
-            <a href="product.html" class="arrival-card"><img src="A4.jpg"><span>Body Balm 50 ml</span></a>
-            <a href="product.html" class="arrival-card"><img src="A5.jpg"><span>Body Balm 400 ml</span></a>
-            <a href="product.html" class="arrival-card"><img src="A6.jpg"><span>Arctic 200 ml</span></a>
+            <a href="peat-mask.html" class="arrival-card">
+                <div class="arrival-img-container">
+                    <img src="A1.jpg">
+                    <div class="arrival-overlay"><em>View Details</em></div>
+                </div>
+                <span>Peat Mask 200 ml</span>
+            </a>
+            <a href="sauna-ice.html" class="arrival-card">
+                <div class="arrival-img-container">
+                    <img src="D5.jpg">
+                    <div class="arrival-overlay"><em>View Details</em></div>
+                </div>
+                <span>Room Scent 400 ml</span>
+            </a>
+            <a href="blueberry.html" class="arrival-card">
+<div class="arrival-img-container">
+                    <img src="A3.jpg">
+                    <div class="arrival-overlay"><em>View Details</em></div>
+                </div>
+                <span>Blueberry 200 ml</span>
+            </a>
+            <a href="body-balm-50.html" class="arrival-card">
+                <div class="arrival-img-container">
+                    <img src="A4.jpg">
+                    <div class="arrival-overlay"><em>View Details</em></div>
+                </div>
+                <span>Body Balm 50 ml</span>
+            </a>
+            <a href="body-balm-400.html" class="arrival-card">
+                <div class="arrival-img-container">
+                    <img src="A5.jpg">
+                    <div class="arrival-overlay"><em>View Details</em></div>
+                </div>
+                <span>Body Balm 400 ml</span>
+            </a>
+            <a href="arctic-scent.html" class="arrival-card">
+                <div class="arrival-img-container">
+                    <img src="A6.jpg">
+                    <div class="arrival-overlay"><em>View Details</em></div>
+                </div>
+                <span>Arctic 200 ml</span>
+            </a>
         </div>
 
         <div class="harmony-wrap">
-            <span class="harmony-headline"></span>
             <p class="harmony-text">"The Finnish sauna is more than just heat; it is a sacred space for reflection, a ritual of purity that cleanses both the body and the soul. In the stillness of the steam, we find a rare connection to nature and ourselves."</p>
         </div>
 
@@ -236,8 +294,7 @@
                 <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
             <div class="collections-grid" id="collGrid">
-
-<div class="collection-item"><img src="A14.jpg" class="coll-img"><h3>Rento × Harri Koskinen</h3></div>
+                <div class="collection-item"><img src="A14.jpg" class="coll-img"><h3>Rento × Harri Koskinen</h3></div>
                 <div class="collection-item"><img src="A15.jpg" class="coll-img"><h3>Buckets and Ladles</h3></div>
                 <div class="collection-item"><img src="A16.jpg" class="coll-img"><h3>Textiles</h3></div>
                 <div class="collection-item"><img src="A17.jpg" class="coll-img"><h3>Sauna Scents</h3></div>
@@ -247,29 +304,30 @@
                 <div class="collection-item"><img src="A21.jpg" class="coll-img"><h3>Accessories</h3></div>
             </div>
             <div class="discover-wrap">
-                <a href="collections.html" class="lux-btn">Discover the collections</a>
+                <a href="collections.html" class="lux-btn">Discover collections</a>
             </div>
         </div>
 
-        <h2 class="section-title" id="article-head">News and Articles</h2>
-        <div class="article-grid">
-            <a href="#" class="news-article p1 active"><img src="A22.jpg"><span class="news-date">October 20, 2025</span><span class="news-tags">manufacturingprocess, rentosauna, saunabuckets</span><h4>In the process of making Rento sauna bucket</h4><p class="news-excerpt">The Rento sauna bucket is a timelessly stylish design...</p></a>
-            <a href="#" class="news-article p1 active"><img src="A23.jpg"><span class="news-date">September 22, 2025</span><span class="news-tags">rento, rentosauna, theharmonyofsauna</span><h4>Brand photography - the quiet power</h4><p class="news-excerpt">When a brand tells its story, words are not...</p></a>
-            <a href="#" class="news-article p1 active"><img src="A24.jpg"><span class="news-date">March 30, 2025</span><span class="news-tags">ice crystal, jääkide, rentosauna</span><h4>Crystal is a new form of sauna scent</h4><p class="news-excerpt">Rento Ice Crystal is a menthol-scented sauna scent in...</p></a>
-            <a href="#" class="news-article p2"><img src="A25.jpg"><span class="news-date">March 24, 2025</span><span class="news-tags">löylytuoksut, rento, sauna scents</span><h4>Rento Sauna scents heighten your senses</h4><p class="news-excerpt">Adding a favourite sauna scent in the sauna bucket...</p></a>
-            <a href="#" class="news-article p2"><img src="A26.jpg"><span class="news-date">February 24, 2025</span><span class="news-tags">articles, soap bars, sustainable</span><h4>Solid bars meet development challenges</h4><p class="news-excerpt">Compact size and active ingredients from nature. The new...</p></a>
-            <a href="#" class="news-article p2"><img src="A27.jpg"><span class="news-date">February 4, 2025</span><span class="news-tags">articles, Pereensaaren, Saunayrittäjä</span><h4>Sauna entrepreneur in Pereensaaren sauna</h4><p class="news-excerpt">The sauna entrepreneur is an entrepreneur in a positive...</p></a>
-            <a href="#" class="news-article p3"><img src="A28.jpg"><span class="news-date">January 13, 2025</span><span class="news-tags">ice swimming, Kenno, rentosauna</span><h4>The benefits of ice swimming</h4><p class="news-excerpt">Ice swimming is a popular health sport in Finland.</p></a>
-            <a href="#" class="news-article p3"><img src="A29.jpg"><span class="news-date">January 2, 2025</span><span class="news-tags">bamboo, interior trends, news</span><h4>Cosy dark brown delights in sauna products</h4><p class="news-excerpt">Dark brown is a elegant new colour for Rento's...</p></a>
-            <a href="#" class="news-article p3"><img src="A30.jpg"><span class="news-date">June 7, 2023</span><span class="news-tags">housing fair, loviisanasuntomessut, news</span><h4>Rento at the Loviisa Housing Fair</h4><p class="news-excerpt">Rento has made its way into the saunas and...</p></a>
 
-<a href="#" class="news-article p4"><img src="A31.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">minimalistic, natural, sauna aesthetics</span><h4>Safe and familiar - Sauna aesthetics</h4><p class="news-excerpt">Natural, dim and minimalistic. This is how Laura Seesmeri...</p></a>
-            <a href="#" class="news-article p4"><img src="A32.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">Pisara, wash basin, design</span><h4>6 reasons why the Rento Pisara is perfect</h4><p class="news-excerpt">We have compiled six good reasons why the drop-shaped...</p></a>
-            <a href="#" class="news-article p4"><img src="A33.jpg"><span class="news-date">April 25, 2023</span><span class="news-tags">basin, industrial designer, drop</span><h4>Wash basin takes the shape of a drop</h4><p class="news-excerpt">When industrial designer Ismo Reponen from IrePoint Oy...</p></a>
-            <a href="#" class="news-article p5"><img src="A34.jpg"><span class="news-date">December 7, 2022</span><span class="news-tags">Christmas Sauna, traditions, celebrations</span><h4>Christmas sauna an atmospheric way</h4><p class="news-excerpt">Christmas sauna, which is a tradition originating in...</p></a>
-            <a href="#" class="news-article p5"><img src="A35.jpg"><span class="news-date">July 1, 2022</span><span class="news-tags">gift, pampering, summer gifts</span><h4>Relaxing summer gifts for sauna lovers</h4><p class="news-excerpt">Summer visits. The hot question is: what kind of gifts...</p></a>
-            <a href="#" class="news-article p5"><img src="A36.jpg"><span class="news-date">July 1, 2022</span><span class="news-tags">trendy, hot rooms, textiles</span><h4>Boost the look of your sauna!</h4><p class="news-excerpt">Large-scale upgrades are not always needed. Instead...</p></a>
-            <a href="#" class="news-article p6"><img src="A37.jpg"><span class="news-date">June 28, 2022</span><span class="news-tags">cottage, summer house, memories</span><h4>Summer house sauna relaxation</h4><p class="news-excerpt">Finns know that the sauna, heating it and bathing in...</p></a>
+<h2 class="section-title" id="article-head">News and Articles</h2>
+        <div class="article-grid">
+            <a href="article-bucket-making.html" class="news-article p1 active"><img src="A22.jpg"><span class="news-date">October 20, 2025</span><span class="news-tags">manufacturingprocess, rentosauna, saunabuckets</span><h4>In the process of making Rento sauna bucket</h4><p class="news-excerpt">The Rento sauna bucket is a timelessly stylish design...</p></a>
+            <a href="article-photography.html" class="news-article p1 active"><img src="A23.jpg"><span class="news-date">September 22, 2025</span><span class="news-tags">rento, rentosauna, theharmonyofsauna</span><h4>Brand photography - the quiet power</h4><p class="news-excerpt">When a brand tells its story, words are not...</p></a>
+            <a href="article-ice-crystal.html" class="news-article p1 active"><img src="A24.jpg"><span class="news-date">March 30, 2025</span><span class="news-tags">ice crystal, jääkide, rentosauna</span><h4>Crystal is a new form of sauna scent</h4><p class="news-excerpt">Rento Ice Crystal is a menthol-scented sauna scent in...</p></a>
+            <a href="article-heighten-senses.html" class="news-article p2"><img src="A25.jpg"><span class="news-date">March 24, 2025</span><span class="news-tags">löylytuoksut, rento, sauna scents</span><h4>Rento Sauna scents heighten your senses</h4><p class="news-excerpt">Adding a favourite sauna scent in the sauna bucket...</p></a>
+            <a href="article-solid-bars.html" class="news-article p2"><img src="A26.jpg"><span class="news-date">February 24, 2025</span><span class="news-tags">articles, soap bars, sustainable</span><h4>Solid bars meet development challenges</h4><p class="news-excerpt">Compact size and active ingredients from nature. The new...</p></a>
+            <a href="article-pereensaaren.html" class="news-article p2"><img src="A27.jpg"><span class="news-date">February 4, 2025</span><span class="news-tags">articles, Pereensaaren, Saunayrittäjä</span><h4>Sauna entrepreneur in Pereensaaren sauna</h4><p class="news-excerpt">The sauna entrepreneur is an entrepreneur in a positive...</p></a>
+            <a href="article-ice-swimming.html" class="news-article p3"><img src="A28.jpg"><span class="news-date">January 13, 2025</span><span class="news-tags">ice swimming, Kenno, rentosauna</span><h4>The benefits of ice swimming</h4><p class="news-excerpt">Ice swimming is a popular health sport in Finland.</p></a>
+            <a href="article-bamboo-trends.html" class="news-article p3"><img src="A29.jpg"><span class="news-date">January 2, 2025</span><span class="news-tags">bamboo, interior trends, news</span><h4>Cosy dark brown delights in sauna products</h4><p class="news-excerpt">Dark brown is a elegant new colour for Rento's...</p></a>
+            <a href="article-loviisa.html" class="news-article p3"><img src="A30.jpg"><span class="news-date">June 7, 2023</span><span class="news-tags">housing fair, loviisanasuntomessut, news</span><h4>Rento at the Loviisa Housing Fair</h4><p class="news-excerpt">Rento has made its way into the saunas and...</p></a>
+            <a href="article-aesthetics.html" class="news-article p4"><img src="A31.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">minimalistic, natural, sauna aesthetics</span><h4>Safe and familiar - Sauna aesthetics</h4><p class="news-excerpt">Natural, dim and minimalistic. This is how Laura Seesmeri...</p></a>
+            <a href="article-pisara.html" class="news-article p4"><img src="A32.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">Pisara, wash basin, design</span><h4>6 reasons why the Rento Pisara is perfect</h4><p class="news-excerpt">We have compiled six good reasons why the drop-shaped...</p></a>
+
+<a href="article-drop-shape.html" class="news-article p4"><img src="A33.jpg"><span class="news-date">April 25, 2023</span><span class="news-tags">basin, industrial designer, drop</span><h4>Wash basin takes the shape of a drop</h4><p class="news-excerpt">When industrial designer Ismo Reponen from IrePoint Oy...</p></a>
+            <a href="article-christmas.html" class="news-article p5"><img src="A34.jpg"><span class="news-date">December 7, 2022</span><span class="news-tags">Christmas Sauna, traditions, celebrations</span><h4>Christmas sauna an atmospheric way</h4><p class="news-excerpt">Christmas sauna, which is a tradition originating in...</p></a>
+            <a href="article-summer-gifts.html" class="news-article p5"><img src="A35.jpg"><span class="news-date">July 1, 2022</span><span class="news-tags">gift, pampering, summer gifts</span><h4>Relaxing summer gifts for sauna lovers</h4><p class="news-excerpt">Summer visits. The hot question is: what kind of gifts...</p></a>
+            <a href="article-boost-look.html" class="news-article p5"><img src="A36.jpg"><span class="news-date">July 1, 2022</span><span class="news-tags">trendy, hot rooms, textiles</span><h4>Boost the look of your sauna!</h4><p class="news-excerpt">Large-scale upgrades are not always needed. Instead...</p></a>
+            <a href="article-memories.html" class="news-article p6"><img src="A37.jpg"><span class="news-date">June 28, 2022</span><span class="news-tags">cottage, summer house, memories</span><h4>Summer house sauna relaxation</h4><p class="news-excerpt">Finns know that the sauna, heating it and bathing in...</p></a>
         </div>
 
         <div class="pagination">
@@ -316,22 +374,38 @@
     let curV = 0;
     const vEl = document.getElementById('heroVideo');
 
-    vEl.onended = function() {
+    // Video dot logic for manual switching
+    function setVideo(index) {
+        curV = index;
+        vEl.style.opacity = '0';
+        setTimeout(() => {
+            vEl.src = videos[curV];
+            vEl.play();
+            vEl.style.opacity = '1';
+            updateDots(curV);
+        }, 500);
+    }
+
+vEl.onended = function() {
         vEl.style.opacity = '0';
         setTimeout(() => {
             curV = (curV + 1) % videos.length;
             vEl.src = videos[curV];
             vEl.play();
             vEl.style.opacity = '1';
+            updateDots(curV);
         }, 1000);
     };
 
+    function updateDots(index) {
+        document.querySelectorAll('.v-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+
     let curP = 1;
     function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); document.querySelector('.sidebar-overlay').classList.toggle('active'); }
-    function toggleDrop(id) { 
-        let element = document.getElementById(id);
-        element.style.display = (element.style.display === 'block') ? 'none' : 'block';
-    }
+    
     function openModal(src) { document.getElementById('modalImg').src = src; document.getElementById('ritualModal').style.display = 'flex'; }
     function closeModal() { document.getElementById('ritualModal').style.display = 'none'; }
     
@@ -352,7 +426,8 @@
 
     function setLang(lang) {
         document.querySelectorAll('.lang-switch span').forEach(s => s.classList.remove('active'));
-        event.target.classList.add('active');
+        // Updated to use current target logic properly
+        event.currentTarget.classList.add('active');
     }
 </script>
 </body>
