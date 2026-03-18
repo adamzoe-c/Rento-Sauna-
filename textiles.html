@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woven Harmony | Rento Textiles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --white: #ffffff; --black: #1a1a1a; --border: #eeeeee; --text-grey: #666666; --bg-grey: #fafafa; --gold: #c5a059; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Cormorant Garamond', serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
+
+        /* --- NAVIGATION --- */
+        header { height: 100px; width: 100%; display: flex; align-items: center; padding: 0 40px; position: fixed; top: 0; background: rgba(255,255,255,0.98); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-back { cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #000; transition: 0.3s; }
+        .nav-back svg { width: 24px; height: 24px; stroke-width: 1.5px; stroke: currentColor; fill: none; }
+        .nav-back:hover { opacity: 0.5; }
+        .main-logo-fixed { position: absolute; left: 50%; transform: translateX(-50%); }
+        .main-logo-fixed img { height: 30px; }
+
+        /* --- HERO --- */
+        .split-hero { margin-top: 100px; display: flex; min-height: 70vh; align-items: center; background: #fff; border-bottom: 1px solid var(--border); }
+        .hero-image-container { flex: 1; padding: 60px; }
+        .hero-image-container img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .hero-content-container { flex: 1; padding: 0 10% 0 5%; }
+        .path-label { font-family: 'Montserrat'; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+        .hero-title { font-size: 4.2rem; font-weight: 300; line-height: 1.1; margin-bottom: 35px; color: #4a4a4a; }
+        .hero-description { font-size: 1.35rem; color: var(--text-grey); max-width: 520px; font-style: italic; }
+
+        /* --- SECTION HEADERS --- */
+        .section-header { text-align: center; padding: 120px 0 40px; }
+        .section-header h2 { font-size: 2.8rem; font-weight: 300; color: #333; letter-spacing: 1px; }
+        .section-header .line { width: 40px; height: 1px; background: var(--gold); margin: 15px auto; }
+
+        /* --- PRODUCT GRID --- */
+        .product-grid { padding: 0 60px 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 30px; max-width: 1600px; margin: 0 auto; }
+        .product-item { text-align: center; text-decoration: none; color: inherit; display: block; }
+        .product-img-wrap { height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; background: #fdfdfd; }
+        .product-img-wrap img { max-width: 85%; max-height: 85%; object-fit: contain; transition: 0.5s ease; }
+        .product-item:hover img { transform: translateY(-5px); }
+        .product-name { font-family: 'Montserrat'; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-bottom: 5px; }
+        .product-desc { font-style: italic; color: #999; font-size: 0.9rem; }
+
+        /* --- PARTNER SECTION (COLORIZED) --- */
+        .partner-section { padding: 80px 0; border-top: 1px solid var(--border); background: var(--white); }
+        .logo-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo-grid img { height: 40px; width: auto; opacity: 1; filter: none; } /* Colors restored here */
+
+
+/* --- FOOTER --- */
+        footer { padding: 100px 40px; background: var(--bg-grey); border-top: 1px solid #eee; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
+        .footer-links-wrap { display: grid; grid-template-columns: repeat(4, 160px); gap: 20px; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; color: var(--black); }
+        .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 12px; font-size: 0.85rem; transition: 0.3s; }
+        .footer-col a:hover { color: var(--black); }
+        .footer-logo-wrap { text-align: right; }
+        .footer-logo-wrap img { width: 200px; display: block; margin-left: auto; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 1100px) {
+            .footer-container { flex-direction: column; }
+            .footer-links-wrap { grid-template-columns: repeat(2, 1fr); gap: 40px; width: 100%; margin-bottom: 60px; }
+            .footer-logo-wrap { width: 100%; text-align: left; }
+            .footer-logo-wrap img { margin-left: 0; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 0 20px; }
+            .split-hero { flex-direction: column; }
+            .hero-image-container { order: 1; padding: 20px; width: 100%; }
+            .hero-content-container { order: 2; padding: 40px 20px; width: 100%; }
+            .hero-title { font-size: 2.8rem; }
+            .product-grid { grid-template-columns: 1fr; padding: 0 25px 60px; gap: 50px; }
+            .footer-links-wrap { grid-template-columns: 1fr; }
+            .footer-logo-wrap { text-align: left; }
+            .footer-logo-wrap img { margin: 0 auto; width: 180px; }
+            .logo-grid { gap: 20px; }
+            .logo-grid img { height: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="collections.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    <div class="main-logo-fixed"><img src="Logo.png" alt="Rento"></div>
+</header>
+
+<main>
+    <section class="split-hero">
+        <div class="hero-image-container"><img src="A16.jpg" alt="Rento Textiles"></div>
+        <div class="hero-content-container">
+            <span class="path-label">The Textile Path</span>
+            <h1 class="hero-title">Woven Harmony</h1>
+            <p class="hero-description">Natural linen and soft cotton textures designed for the modern sauna experience.</p>
+        </div>
+    </section>
+
+    <div class="section-header"><h2>Bath Robes</h2><div class="line"></div></div>
+    <section class="product-grid">
+        <a href="t1.html" class="product-item"><div class="product-img-wrap"><img src="T1.jpg"></div><h3 class="product-name">Robe T1</h3><p class="product-desc">Classic Collection</p></a>
+        <a href="t2.html" class="product-item"><div class="product-img-wrap"><img src="T2.jpg"></div><h3 class="product-name">Robe T2</h3><p class="product-desc">Kenno Collection</p></a>
+        <a href="t3.html" class="product-item"><div class="product-img-wrap"><img src="T3.jpg"></div><h3 class="product-name">Robe T3</h3><p class="product-desc">Kenno Collection</p></a>
+        <a href="t4.html" class="product-item"><div class="product-img-wrap"><img src="T4.jpg"></div><h3 class="product-name">Robe T4</h3><p class="product-desc">Kenno Collection</p></a>
+        <a href="t5.html" class="product-item"><div class="product-img-wrap"><img src="T5.jpg"></div><h3 class="product-name">Robe T5</h3><p class="product-desc">Kenno Collection</p></a>
+        <a href="t6.html" class="product-item"><div class="product-img-wrap"><img src="T6.jpg"></div><h3 class="product-name">Robe T6</h3><p class="product-desc">Kids Edition</p></a>
+    </section>
+
+
+<div class="section-header"><h2>Towels</h2><div class="line"></div></div>
+    <section class="product-grid">
+        <a href="e1.html" class="product-item"><div class="product-img-wrap"><img src="E1.jpg"></div><h3 class="product-name">Towel E1</h3></a>
+        <a href="e2.html" class="product-item"><div class="product-img-wrap"><img src="E2.jpg"></div><h3 class="product-name">Towel E2</h3></a>
+        <a href="e3.html" class="product-item"><div class="product-img-wrap"><img src="E3.jpg"></div><h3 class="product-name">Towel E3</h3></a>
+        <a href="e4.html" class="product-item"><div class="product-img-wrap"><img src="E4.jpg"></div><h3 class="product-name">Towel E4</h3></a>
+        <a href="e5.html" class="product-item"><div class="product-img-wrap"><img src="E5.jpg"></div><h3 class="product-name">Towel E5</h3></a>
+        <a href="e6.html" class="product-item"><div class="product-img-wrap"><img src="E6.jpg"></div><h3 class="product-name">Towel E6</h3></a>
+        <a href="e7.html" class="product-item"><div class="product-img-wrap"><img src="E7.jpg"></div><h3 class="product-name">Towel E7</h3></a>
+        <a href="e8.html" class="product-item"><div class="product-img-wrap"><img src="E8.jpg"></div><h3 class="product-name">Towel E8</h3></a>
+        <a href="e9.html" class="product-item"><div class="product-img-wrap"><img src="E9.jpg"></div><h3 class="product-name">Towel E9</h3></a>
+        <a href="e10.html" class="product-item"><div class="product-img-wrap"><img src="E10.jpg"></div><h3 class="product-name">Towel E10</h3></a>
+        <a href="e11.html" class="product-item"><div class="product-img-wrap"><img src="E11.jpg"></div><h3 class="product-name">Towel E11</h3></a>
+        <a href="e12.html" class="product-item"><div class="product-img-wrap"><img src="E12.jpg"></div><h3 class="product-name">Towel E12</h3></a>
+        <a href="e13.html" class="product-item"><div class="product-img-wrap"><img src="E13.jpg"></div><h3 class="product-name">Towel E13</h3></a>
+        <a href="e14.html" class="product-item"><div class="product-img-wrap"><img src="E14.jpg"></div><h3 class="product-name">Towel E14</h3></a>
+        <a href="e15.html" class="product-item"><div class="product-img-wrap"><img src="E15.jpg"></div><h3 class="product-name">Towel E15</h3></a>
+        <a href="e16.html" class="product-item"><div class="product-img-wrap"><img src="E16.jpg"></div><h3 class="product-name">Towel E16</h3></a>
+        <a href="e17.html" class="product-item"><div class="product-img-wrap"><img src="E17.jpg"></div><h3 class="product-name">Towel E17</h3></a>
+        <a href="e18.html" class="product-item"><div class="product-img-wrap"><img src="E18.jpg"></div><h3 class="product-name">Towel E18</h3></a>
+        <a href="e19.html" class="product-item"><div class="product-img-wrap"><img src="E19.jpg"></div><h3 class="product-name">Towel E19</h3></a>
+        <a href="e20.html" class="product-item"><div class="product-img-wrap"><img src="E20.jpg"></div><h3 class="product-name">Towel E20</h3></a>
+    </section>
+
+    <div class="section-header"><h2>Seat Covers</h2><div class="line"></div></div>
+    <section class="product-grid">
+        <a href="s1.html" class="product-item"><div class="product-img-wrap"><img src="S1.jpg"></div><h3 class="product-name">Cover S1</h3></a>
+        <a href="s2.html" class="product-item"><div class="product-img-wrap"><img src="S2.jpg"></div><h3 class="product-name">Cover S2</h3></a>
+        <a href="s3.html" class="product-item"><div class="product-img-wrap"><img src="S3.jpg"></div><h3 class="product-name">Cover S3</h3></a>
+        <a href="s4.html" class="product-item"><div class="product-img-wrap"><img src="S4.jpg"></div><h3 class="product-name">Cover S4</h3></a>
+        <a href="s5.html" class="product-item"><div class="product-img-wrap"><img src="S5.jpg"></div><h3 class="product-name">Cover S5</h3></a>
+
+
+<a href="s6.html" class="product-item"><div class="product-img-wrap"><img src="S6.jpg"></div><h3 class="product-name">Cover S6</h3></a>
+        <a href="s7.html" class="product-item"><div class="product-img-wrap"><img src="S7.jpg"></div><h3 class="product-name">Cover S7</h3></a>
+        <a href="s8.html" class="product-item"><div class="product-img-wrap"><img src="S8.jpg"></div><h3 class="product-name">Cover S8</h3></a>
+        <a href="s9.html" class="product-item"><div class="product-img-wrap"><img src="S9.jpg"></div><h3 class="product-name">Cover S9</h3></a>
+        <a href="s10.html" class="product-item"><div class="product-img-wrap"><img src="S10.jpg"></div><h3 class="product-name">Cover S10</h3></a>
+        <a href="s11.html" class="product-item"><div class="product-img-wrap"><img src="S11.jpg"></div><h3 class="product-name">Cover S11</h3></a>
+        <a href="s12.html" class="product-item"><div class="product-img-wrap"><img src="S12.jpg"></div><h3 class="product-name">Cover S12</h3></a>
+        <a href="s13.html" class="product-item"><div class="product-img-wrap"><img src="S13.jpg"></div><h3 class="product-name">Cover S13</h3></a>
+        <a href="s14.html" class="product-item"><div class="product-img-wrap"><img src="S14.jpg"></div><h3 class="product-name">Cover S14</h3></a>
+        <a href="s15.html" class="product-item"><div class="product-img-wrap"><img src="S15.jpg"></div><h3 class="product-name">Cover S15</h3></a>
+        <a href="s16.html" class="product-item"><div class="product-img-wrap"><img src="S16.jpg"></div><h3 class="product-name">Cover S16</h3></a>
+        <a href="s17.html" class="product-item"><div class="product-img-wrap"><img src="S17.jpg"></div><h3 class="product-name">Cover S17</h3></a>
+        <a href="s18.html" class="product-item"><div class="product-img-wrap"><img src="S18.jpg"></div><h3 class="product-name">Cover S18</h3></a>
+        <a href="s19.html" class="product-item"><div class="product-img-wrap"><img src="S19.jpg"></div><h3 class="product-name">Cover S19</h3></a>
+        <a href="s20.html" class="product-item"><div class="product-img-wrap"><img src="S20.jpg"></div><h3 class="product-name">Cover S20</h3></a>
+        <a href="s21.html" class="product-item"><div class="product-img-wrap"><img src="S21.jpg"></div><h3 class="product-name">Cover S21</h3></a>
+        <a href="s22.html" class="product-item"><div class="product-img-wrap"><img src="S22.jpg"></div><h3 class="product-name">Cover S22</h3></a>
+    </section>
+
+    <div class="section-header"><h2>Sauna Pillows</h2><div class="line"></div></div>
+    <section class="product-grid">
+        <a href="w1.html" class="product-item"><div class="product-img-wrap"><img src="W1.jpg"></div><h3 class="product-name">Pillow W1</h3></a>
+        <a href="w2.html" class="product-item"><div class="product-img-wrap"><img src="W2.jpg"></div><h3 class="product-name">Pillow W2</h3></a>
+        <a href="w3.html" class="product-item"><div class="product-img-wrap"><img src="W3.jpg"></div><h3 class="product-name">Pillow W3</h3></a>
+        <a href="w4.html" class="product-item"><div class="product-img-wrap"><img src="W4.jpg"></div><h3 class="product-name">Pillow W4</h3></a>
+        <a href="w5.html" class="product-item"><div class="product-img-wrap"><img src="W5.jpg"></div><h3 class="product-name">Pillow W5</h3></a>
+        <a href="w6.html" class="product-item"><div class="product-img-wrap"><img src="W6.jpg"></div><h3 class="product-name">Pillow W6</h3></a>
+        <a href="w7.html" class="product-item"><div class="product-img-wrap"><img src="W7.jpg"></div><h3 class="product-name">Pillow W7</h3></a>
+        <a href="w8.html" class="product-item"><div class="product-img-wrap"><img src="W8.jpg"></div><h3 class="product-name">Pillow W8</h3></a>
+        <a href="w9.html" class="product-item"><div class="product-img-wrap"><img src="W9.jpg"></div><h3 class="product-name">Pillow W9</h3></a>
+
+
+<a href="w10.html" class="product-item"><div class="product-img-wrap"><img src="W10.jpg"></div><h3 class="product-name">Pillow W10</h3></a>
+        <a href="w11.html" class="product-item"><div class="product-img-wrap"><img src="W11.jpg"></div><h3 class="product-name">Pillow W11</h3></a>
+        <a href="w12.html" class="product-item"><div class="product-img-wrap"><img src="W12.jpg"></div><h3 class="product-name">Pillow W12</h3></a>
+    </section>
+
+    <div class="partner-section">
+        <div class="logo-grid">
+            <img src="1.jpg" alt="Partner 1"><img src="2.jpg" alt="Partner 2"><img src="3.jpg" alt="Partner 3">
+            <img src="4.jpg" alt="Partner 4"><img src="5.jpg" alt="Partner 5"><img src="6.jpg" alt="Partner 6">
+            <img src="7.jpg" alt="Partner 7"><img src="8.jpg" alt="Partner 8"><img src="9.jpg" alt="Partner 9">
+            <img src="10.jpg" alt="Partner 10"><img src="11.jpg" alt="Partner 11">
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-links-wrap">
+            <div class="footer-col">
+                <h5>Service</h5>
+                <a href="customer-service.html">Customer Service</a>
+                <a href="retailers.html">Retailers</a>
+            </div>
+            <div class="footer-col">
+                <h5>Press</h5>
+                <a href="media.html">For Media</a>
+                <a href="imagery.html">Imagery</a>
+            </div>
+            <div class="footer-col">
+                <h5>Sustainability</h5>
+                <a href="materials.html">Materials</a>
+                <a href="promise.html">Our Promise</a>
+            </div>
+            <div class="footer-col">
+                <h5>Social</h5>
+                <a href="https://facebook.com">Facebook</a>
+                <a href="https://instagram.com">Instagram</a>
+            </div>
+        </div>
+        <div class="footer-logo-wrap"><img src="Logo.png" alt="Rento"></div>
+    </div>
+</footer>
+
+</body>
+</html>
