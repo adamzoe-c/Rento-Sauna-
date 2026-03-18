@@ -47,7 +47,6 @@
 .section-title { padding: 100px 0 50px; font-family: 'Montserrat'; font-weight: 200; letter-spacing: 8px; text-transform: uppercase; font-size: 0.8rem; }
         
         .harmony-wrap { max-width: 850px; margin: 80px auto; }
-        .harmony-headline { font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
         .harmony-text { font-style: italic; font-size: 1.6rem; color: #333; line-height: 1.8; }
 
         /* --- LUXURY NEW ARRIVALS --- */
@@ -58,7 +57,6 @@
         
         .arrival-card span { font-family: 'Montserrat'; font-size: 0.55rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; padding-bottom: 8px; transition: 0.3s; }
         
-        /* The Luxury Hover Effect Updated */
         .arrival-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.15); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
         .arrival-overlay em { font-family: 'Montserrat'; font-style: normal; text-transform: uppercase; letter-spacing: 2px; color: #000; font-size: 0.65rem; background: #fff; padding: 12px 25px; transform: translateY(15px); transition: 0.4s; }
         
@@ -76,13 +74,13 @@
         .ritual-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 50px; }
         .ritual-grid img { width: 100%; aspect-ratio: 2/3; object-fit: cover; cursor: pointer; }
 
-        /* --- OUR COLLECTIONS --- */
-        .collections-outer { position: relative; padding: 0 30px; margin-bottom: 100px; }
-        .collections-grid { display: flex; flex-wrap: nowrap; gap: 30px; overflow-x: auto; scroll-behavior: smooth; margin-bottom: 40px; -ms-overflow-style: none; scrollbar-width: none; }
-        .collections-grid::-webkit-scrollbar { display: none; }
-        .collection-item { flex: 0 0 calc(25% - 22.5px); text-align: center; min-width: 250px; display: flex; flex-direction: column; align-items: center; }
-        .coll-img { width: 100%; height: 380px; object-fit: cover; background: #f7f7f7; transition: 0.5s; margin-bottom: 20px; }
-        .collection-item h3 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        /* --- OUR COLLECTIONS (Georg Jensen Inspired) --- */
+        .collections-outer { position: relative; padding: 0 0px; margin-bottom: 100px; }
+        .collections-grid { display: flex; flex-wrap: nowrap; gap: 30px; overflow-x: hidden; scroll-behavior: smooth; margin-bottom: 40px; padding: 0 10px; }
+        .collection-item { flex: 0 0 calc(25% - 22.5px); text-align: center; min-width: calc(25% - 22.5px); display: flex; flex-direction: column; align-items: center; }
+        .coll-img { width: 100%; height: 450px; object-fit: cover; background: #f7f7f7; transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); margin-bottom: 25px; }
+        .collection-item h3 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; font-weight: 400; }
+        .collection-item:hover .coll-img { transform: scale(1.02); }
         
         .discover-wrap { display: flex; justify-content: center; padding-top: 20px; }
         .lux-btn { 
@@ -91,10 +89,8 @@
             font-style: italic; 
             text-transform: capitalize; 
             letter-spacing: 1px; 
-            padding: 15px 50px;
-
-
-border: 1px solid var(--black); 
+            padding: 15px 50px; 
+            border: 1px solid var(--black); 
             background: transparent; 
             color: var(--black);
             transition: 0.3s ease; 
@@ -103,10 +99,13 @@ border: 1px solid var(--black);
         }
         .lux-btn:hover { background: var(--black); color: var(--white); }
 
-        .coll-arrow { position: absolute; top: 190px; width: 60px; height: 100px; z-index: 10; cursor: pointer; display: flex; align-items: center; justify-content: center; transform: translateY(-50%); border: none; }
-        .arrow-left { left: 0; background: var(--accent); }
-        .arrow-right { right: 0; background: var(--beige); }
-        .coll-arrow svg { width: 25px; height: 25px; stroke: #1a1a1a; fill: none; stroke-width: 1.5px; }
+
+.coll-arrow { position: absolute; top: 40%; width: 50px; height: 50px; z-index: 10; cursor: pointer; display: flex; align-items: center; justify-content: center; transform: translateY(-50%); border: 1px solid #eee; background: #fff; border-radius: 50%; transition: 0.3s; }
+        .coll-arrow:hover { background: #116466; border-color: #116466; }
+        .coll-arrow:hover svg { stroke: #fff; }
+        .arrow-left { left: -25px; }
+        .arrow-right { right: -25px; }
+        .coll-arrow svg { width: 20px; height: 20px; stroke: #1a1a1a; fill: none; stroke-width: 1.5px; }
 
         /* ARTICLES GRID */
         .article-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: left; min-height: 580px; }
@@ -145,19 +144,19 @@ border: 1px solid var(--black);
         /* --- MOBILE ADJUSTMENTS --- */
         @media (max-width: 1024px) { 
             .article-grid { grid-template-columns: repeat(2, 1fr); } 
-            .collection-item { flex: 0 0 calc(50% - 15px); }
+            .collection-item { flex: 0 0 calc(50% - 15px); min-width: calc(50% - 15px); }
+            .arrow-left { left: 10px; } .arrow-right { right: 10px; }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 768px) { 
+            .arrival-grid { grid-template-columns: repeat(2, 1fr); }
 
-
-.arrival-grid { grid-template-columns: repeat(2, 1fr); } 
-            .ritual-grid { grid-template-columns: repeat(3, 1fr); } 
+.ritual-grid { grid-template-columns: repeat(3, 1fr); } 
             .footer-grid { grid-template-columns: 1fr; } 
             .sidebar { width: 100%; left: -100%; }
             .badge-row { flex-direction: column; gap: 40px; align-items: center; }
             .collection-item { flex: 0 0 100%; min-width: 100%; }
-            .coll-img { height: 300px; }
+            .coll-img { height: 350px; }
             .article-grid { grid-template-columns: 1fr; }
             .pagination { gap: 5px; }
             .p-num { width: 35px; height: 35px; font-size: 0.7rem; }
@@ -240,8 +239,10 @@ border: 1px solid var(--black);
                 <span>Room Scent 400 ml</span>
             </a>
             <a href="blueberry.html" class="arrival-card">
-<div class="arrival-img-container">
-                    <img src="A3.jpg">
+                <div class="arrival-img-container">
+
+
+<img src="A3.jpg">
                     <div class="arrival-overlay"><em>View Details</em></div>
                 </div>
                 <span>Blueberry 200 ml</span>
@@ -304,7 +305,7 @@ border: 1px solid var(--black);
                 <div class="collection-item"><img src="A21.jpg" class="coll-img"><h3>Accessories</h3></div>
             </div>
             <div class="discover-wrap">
-                <a href="collections.html" class="lux-btn">Discover collections</a>
+                <a href="collections.html" class="lux-btn">Discover the collections</a>
             </div>
         </div>
 
@@ -322,6 +323,7 @@ border: 1px solid var(--black);
             <a href="article-loviisa.html" class="news-article p3"><img src="A30.jpg"><span class="news-date">June 7, 2023</span><span class="news-tags">housing fair, loviisanasuntomessut, news</span><h4>Rento at the Loviisa Housing Fair</h4><p class="news-excerpt">Rento has made its way into the saunas and...</p></a>
             <a href="article-aesthetics.html" class="news-article p4"><img src="A31.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">minimalistic, natural, sauna aesthetics</span><h4>Safe and familiar - Sauna aesthetics</h4><p class="news-excerpt">Natural, dim and minimalistic. This is how Laura Seesmeri...</p></a>
             <a href="article-pisara.html" class="news-article p4"><img src="A32.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">Pisara, wash basin, design</span><h4>6 reasons why the Rento Pisara is perfect</h4><p class="news-excerpt">We have compiled six good reasons why the drop-shaped...</p></a>
+
 
 <a href="article-drop-shape.html" class="news-article p4"><img src="A33.jpg"><span class="news-date">April 25, 2023</span><span class="news-tags">basin, industrial designer, drop</span><h4>Wash basin takes the shape of a drop</h4><p class="news-excerpt">When industrial designer Ismo Reponen from IrePoint Oy...</p></a>
             <a href="article-christmas.html" class="news-article p5"><img src="A34.jpg"><span class="news-date">December 7, 2022</span><span class="news-tags">Christmas Sauna, traditions, celebrations</span><h4>Christmas sauna an atmospheric way</h4><p class="news-excerpt">Christmas sauna, which is a tradition originating in...</p></a>
@@ -374,7 +376,6 @@ border: 1px solid var(--black);
     let curV = 0;
     const vEl = document.getElementById('heroVideo');
 
-    // Video dot logic for manual switching
     function setVideo(index) {
         curV = index;
         vEl.style.opacity = '0';
@@ -385,6 +386,7 @@ border: 1px solid var(--black);
             updateDots(curV);
         }, 500);
     }
+
 
 vEl.onended = function() {
         vEl.style.opacity = '0';
@@ -418,15 +420,15 @@ vEl.onended = function() {
     }
     function changeP(dir) { let n = curP + dir; if(n >= 1 && n <= 6) goPage(n); }
     
+    // Updated Slider Logic: One click moves the full visible width
     function scrollColl(dir) {
         const grid = document.getElementById('collGrid');
-        const scrollAmount = grid.clientWidth / 2;
+        const scrollAmount = grid.clientWidth; 
         grid.scrollBy({ left: scrollAmount * dir, behavior: 'smooth' });
     }
 
     function setLang(lang) {
         document.querySelectorAll('.lang-switch span').forEach(s => s.classList.remove('active'));
-        // Updated to use current target logic properly
         event.currentTarget.classList.add('active');
     }
 </script>
