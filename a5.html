@@ -46,8 +46,7 @@
         .award-title { font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; display: block; color: var(--black); }
         .award-quote { font-style: italic; font-size: 1.05rem; color: #444; }
 
-/* B2B REDIRECT BUTTON */
-        .btn-partner { 
+.btn-partner { 
             display: inline-block; width: 100%; background: var(--black); color: white; padding: 22px;
             text-decoration: none; font-family: 'Montserrat'; font-size: 0.75rem; font-weight: 600; 
             text-transform: uppercase; letter-spacing: 2px; text-align: center; transition: 0.4s;
@@ -66,8 +65,8 @@
         .logo-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .logo-grid img { height: 35px; width: auto; }
 
-        /* --- FOOTER (REFINED) --- */
-        footer { padding: 100px 40px; background: #fafafa; border-top: 1px solid #eee; }
+        /* --- FOOTER --- */
+        footer { padding: 80px 40px; background: #fafafa; border-top: 1px solid #eee; }
         .footer-container { 
             max-width: 1400px; 
             margin: 0 auto; 
@@ -79,7 +78,6 @@
         .footer-grid { display: grid; grid-template-columns: repeat(4, 160px); gap: 30px; text-align: left; }
         .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600; }
         
-        /* Footer link: Normal font weight, no italics */
         .footer-col a { 
             display: block; 
             color: #777; 
@@ -91,8 +89,7 @@
         }
         .footer-col a:hover { color: #000; }
         
-        /* Logo moved to the left */
-        .footer-logo-wrap { text-align: left; }
+        .footer-logo-wrap { text-align: right; }
         .footer-logo-wrap img { width: 160px; margin-bottom: 10px; }
         .footer-logo-wrap p { font-family: 'Montserrat'; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #bbb; }
 
@@ -103,13 +100,29 @@
             .main-image { height: 350px; }
             .details-section { flex: none; width: 100%; padding: 40px 20px; }
             
-            .footer-container { flex-direction: column; gap: 60px; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); width: 100%; }
-            .footer-logo-wrap { text-align: right; width: 100%; border-top: 1px solid #eee; padding-top: 40px; }
+            .footer-container { flex-direction: column; gap: 40px; align-items: flex-start; }
+            
+            /* Stacking columns vertically */
+            .footer-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+                width: 100%; 
+            }
+            
+            /* Keeping logo to the right even on mobile */
+            .footer-logo-wrap { 
+                align-self: flex-end; 
+                text-align: right; 
+                width: 100%; 
+                margin-top: 20px;
+                border-top: 1px solid #eee;
+                padding-top: 40px;
+            }
         }
     </style>
 </head>
 <body>
+
 
 <header>
     <a href="cosmetics.html" class="nav-back">
@@ -199,7 +212,8 @@
                 <a href="#">Materials</a>
                 <a href="#">Our Promise</a>
             </div>
-            <div class="footer-col">
+
+<div class="footer-col">
                 <h5>Social</h5>
                 <a href="https://www.facebook.com/share/17G4i5g1g9/">Facebook</a>
                 <a href="https://www.instagram.com/rentosauna/">Instagram</a>
@@ -208,9 +222,8 @@
         
         <div class="footer-logo-wrap">
             <img src="Logo.png" alt="Rento">
-    </div>
+        </div>
 </footer>
-
 
 <script>
     function changeImg(src, index) {
