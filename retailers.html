@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retailers | Rento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --white: #ffffff; --black: #1a1a1a; --border: #eeeeee; --bg-alt: #fcfcfc; --gold: #c5a059;
+            /* Brand Colors for all 9 */
+            --superior: #b11f24; --finnstyle: #000000; --touch: #003580;
+            --saunastore: #ff6600; --saunaspares: #2d2d2d;
+            --krauta: #0056a3; --prisma: #009640; 
+            --galaxus: #005598; --epharmacy: #203a71;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Cormorant Garamond', serif; 
+            background: var(--white); color: var(--black); 
+            line-height: 1.6; -webkit-font-smoothing: antialiased; 
+        }
+
+        /* --- STABLE HEADER --- */
+        header { 
+            height: 80px; width: 100%; display: grid; 
+            grid-template-columns: 80px 1fr 80px; align-items: center; 
+            padding: 0 20px; position: fixed; top: 0; 
+            background: #fff; z-index: 2000; border-bottom: 1px solid var(--border); 
+        }
+
+        .nav-back { grid-column: 1; display: flex; align-items: center; text-decoration: none; color: #000; }
+        .nav-back svg { width: 22px; height: 22px; stroke-width: 1.2px; stroke: currentColor; fill: none; }
+        
+        .main-logo-fixed { grid-column: 2; display: flex; justify-content: center; align-items: center; }
+        .main-logo-fixed img { height: 20px; cursor: pointer; }
+        
+        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 1px; font-weight: 600; }
+
+        /* --- CONTENT --- */
+        main { margin-top: 80px; padding: 60px 24px 100px; max-width: 1100px; margin: 0 auto; }
+
+        .page-header { text-align: center; margin-bottom: 80px; }
+        .page-header span { font-family: 'Montserrat'; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: #aaa; display: block; margin-bottom: 15px; }
+        .page-header h1 { font-size: 3.2rem; font-weight: 300; font-style: italic; }
+
+        .region-block { margin-bottom: 80px; }
+        .region-name { 
+            font-family: 'Montserrat'; font-size: 0.8rem; text-transform: uppercase; 
+            letter-spacing: 3px; color: var(--gold); border-bottom: 1px solid #eee; 
+            padding-bottom: 15px; margin-bottom: 30px; 
+        }
+
+        .retailer-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+
+        /* --- RETAILER CARD --- */
+        .retailer-card { 
+            display: grid; grid-template-columns: 80px 1fr auto; align-items: center;
+            padding: 20px; background: var(--bg-alt); border: 1px solid #f0f0f0;
+            text-decoration: none; color: inherit; transition: all 0.3s ease;
+        }
+
+        .retailer-logo { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .retailer-logo img { width: 100%; height: auto; object-fit: contain; filter: grayscale(1); transition: 0.4s; }
+        
+        .retailer-info h3 { font-size: 1.4rem; font-weight: 400; margin-bottom: 2px; }
+        .retailer-info p { font-family: 'Montserrat'; font-size: 0.6rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+
+        .visit-link { font-family: 'Montserrat'; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #bbb; transition: 0.3s; }
+
+        /* Hover Transitions */
+
+.retailer-card:hover { background: #fff; }
+        .retailer-card:hover .retailer-logo img { filter: grayscale(0); }
+        
+        /* 1. Superior */ .card-sup:hover { border-color: var(--superior); } .card-sup:hover .visit-link { color: var(--superior); }
+        /* 2. Finnstyle */ .card-finn:hover { border-color: var(--finnstyle); } .card-finn:hover .visit-link { color: var(--finnstyle); }
+        /* 3. Touch */ .card-touch:hover { border-color: var(--touch); } .card-touch:hover .visit-link { color: var(--touch); }
+        /* 4. SaunaStore */ .card-ss:hover { border-color: var(--saunastore); } .card-ss:hover .visit-link { color: var(--saunastore); }
+        /* 5. Spares */ .card-spares:hover { border-color: var(--saunaspares); } .card-spares:hover .visit-link { color: var(--saunaspares); }
+        /* 6. Krauta */ .card-kr:hover { border-color: var(--krauta); } .card-kr:hover .visit-link { color: var(--krauta); }
+        /* 7. Prisma */ .card-pr:hover { border-color: var(--prisma); } .card-pr:hover .visit-link { color: var(--prisma); }
+        /* 8. Galaxus */ .card-gx:hover { border-color: var(--galaxus); } .card-gx:hover .visit-link { color: var(--galaxus); }
+        /* 9. ePharma */ .card-ep:hover { border-color: var(--epharmacy); } .card-ep:hover .visit-link { color: var(--epharmacy); }
+
+        /* --- FOOTER --- */
+        footer { padding: 60px 20px; background: #fff; border-top: 1px solid #eee; text-align: center; }
+        .footer-logo img { height: 18px; filter: brightness(0); margin-bottom: 15px; }
+
+        @media (min-width: 1024px) {
+            header { height: 100px; grid-template-columns: 120px 1fr 120px; }
+            .main-logo-fixed img { height: 26px; }
+            main { margin-top: 100px; padding-top: 80px; }
+            .retailer-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .retailer-card { padding: 30px; grid-template-columns: 100px 1fr auto; }
+            .retailer-logo { width: 70px; }
+        }
+
+          /* FOOTER */
+        footer { padding: 100px 40px; background: #fafafa; border-top: 1px solid #eee; }
+        .footer-grid { display: grid; grid-template-columns: repeat(5, 1fr) 1.5fr; gap: 30px; text-align: left; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 12px; font-size: 0.85rem; }
+        .footer-logo-wrap { text-align: right; }
+        .footer-logo-wrap img { width: 160px; }
+/* --- MOBILE ADJUSTMENTS --- */
+        @media (max-width: 1024px) { 
+            .article-grid { grid-template-columns: repeat(2, 1fr); } 
+            .collection-item { flex: 0 0 calc(50% - 15px); min-width: calc(50% - 15px); }
+            .arrow-left { left: 10px; } .arrow-right { right: 10px; }
+        }
+
+        @media (max-width: 768px) { 
+            .arrival-grid { grid-template-columns: repeat(2, 1fr); }
+
+.ritual-grid { grid-template-columns: repeat(3, 1fr); } 
+            .footer-grid { grid-template-columns: 1fr; } 
+            .sidebar { width: 100%; left: -100%; }
+            .badge-row { flex-direction: column; gap: 40px; align-items: center; }
+            .collection-item { flex: 0 0 100%; min-width: 100%; }
+            .coll-img { height: 350px; }
+            .article-grid { grid-template-columns: 1fr; }
+            .pagination { gap: 5px; }
+            .p-num { width: 35px; height: 35px; font-size: 0.7rem; }
+            .p-btn { font-size: 0.6rem; letter-spacing: 1px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    <div class="main-logo-fixed">
+        <img src="Logo.png" alt="Rento" onclick="location.href='index.html'">
+    </div>
+    <div class="lang-container">EN | FI</div>
+</header>
+
+<main>
+    <div class="page-header">
+        <span>Global Partners</span>
+        <h1>Retailers & Stockists</h1>
+    </div>
+
+    <div class="region-block">
+        <h2 class="region-name">🇺🇸 North America</h2>
+        <div class="retailer-grid">
+            <a href="https://superiorsaunas.com/collections/rento-sauna-accessories" class="retailer-card card-sup" target="_blank">
+                <div class="retailer-logo"><img src="Superior.jpg" alt="Superior Saunas"></div>
+                <div class="retailer-info"><h3>Superior Saunas</h3><p>USA & Canada</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+            <a href="https://www.finnstyle.com/rento-sauna.html" class="retailer-card card-finn" target="_blank">
+                <div class="retailer-logo"><img src="Finnstyle.jpg" alt="FinnStyle"></div>
+                <div class="retailer-info"><h3>FinnStyle</h3><p>Scandinavian Design</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+            <a href="https://touchoffinland.com/collections/rento" class="retailer-card card-touch" target="_blank">
+                <div class="retailer-logo"><img src="TouchOfFinland.jpg" alt="Touch of Finland"></div>
+                <div class="retailer-info"><h3>Touch of Finland</h3><p>Michigan, USA</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+        </div>
+    </div>
+<div class="region-block">
+        <h2 class="region-name">🇬🇧 United Kingdom</h2>
+        <div class="retailer-grid">
+            <a href="https://sauna-store.com/brand/rento/" class="retailer-card card-ss" target="_blank">
+                <div class="retailer-logo"><img src="SaunaStoreUK.jpg" alt="Sauna-Store UK"></div>
+                <div class="retailer-info"><h3>Sauna-Store UK</h3><p>Official Distributor</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+            <a href="https://www.saunaspares.com/rento-accessories" class="retailer-card card-spares" target="_blank">
+                <div class="retailer-logo"><img src="SaunaSpares.jpg" alt="Sauna Spares"></div>
+                <div class="retailer-info"><h3>Sauna Spares</h3><p>Parts & Accessories</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="region-block">
+        <h2 class="region-name">🇫🇮 Finland</h2>
+        <div class="retailer-grid">
+            <a href="https://www.k-rauta.fi/brandi/rento" class="retailer-card card-kr" target="_blank">
+                <div class="retailer-logo"><img src="KRauta.jpg" alt="K-Rauta"></div>
+                <div class="retailer-info"><h3>K-Rauta</h3><p>Home & Hardware</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+            <a href="https://www.prisma.fi/merkki/rento" class="retailer-card card-pr" target="_blank">
+                <div class="retailer-logo"><img src="Prisma.jpg" alt="Prisma"></div>
+                <div class="retailer-info"><h3>Prisma</h3><p>Hypermarket</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="region-block">
+        <h2 class="region-name">🇪🇺 Europe</h2>
+        <div class="retailer-grid">
+            <a href="https://www.galaxus.de/en/brand/rento-22683" class="retailer-card card-gx" target="_blank">
+                <div class="retailer-logo"><img src="Galaxus.jpg" alt="Galaxus Germany"></div>
+                <div class="retailer-info"><h3>Galaxus</h3><p>Germany & EU</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+            <a href="https://epharmacy.net/collections/rento" class="retailer-card card-ep" target="_blank">
+                <div class="retailer-logo"><img src="Epharmacy.jpg" alt="ePharmaCY"></div>
+                <div class="retailer-info"><h3>ePharmaCY</h3><p>Cyprus & South Europe</p></div>
+                <div class="visit-link">Shop Online</div>
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="retailers.html">Retailers</a></div>
+        <div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
+        <div class="footer-col"><h5>Sustainability</h5><a href="materials.html">Materials</a><a href="promise.html">Our Promise</a></div>
+        <div class="footer-col"><h5>Social</h5>
+            <a href="https://www.facebook.com/share/17G4i5g1g9/">Facebook</a>
+            <a href="https://www.instagram.com/rentosauna/">Instagram</a>
+        </div>
+        <div class="footer-logo-wrap"><img src="Logo.png"></div>
+    </div>
+</footer>
+
+</body>
+</html>
