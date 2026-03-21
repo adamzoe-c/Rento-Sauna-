@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sauna Thermometers | Rento Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --white: #ffffff; --black: #1a1a1a; --border: #eeeeee; --text-grey: #666666; --bg-grey: #fafafa; --gold: #c5a059; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { font-family: 'Cormorant Garamond', serif; background: var(--white); color: var(--black); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+        /* --- NAVIGATION --- */
+        header { height: 100px; width: 100%; display: flex; align-items: center; padding: 0 40px; position: fixed; top: 0; background: rgba(255,255,255,0.98); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-back { cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #000; transition: 0.3s; }
+        .nav-back svg { width: 24px; height: 24px; stroke-width: 1.5px; stroke: currentColor; fill: none; }
+        .nav-back:hover { opacity: 0.5; }
+        .main-logo-fixed { position: absolute; left: 50%; transform: translateX(-50%); }
+        .main-logo-fixed img { height: 30px; }
+        .lang-switch { position: absolute; right: 40px; font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 1px; font-weight: 600; }
+
+        /* --- HERO SECTION --- */
+        .split-hero { margin-top: 100px; display: flex; min-height: 70vh; align-items: center; background: #fff; border-bottom: 1px solid var(--border); }
+        .hero-image-container { flex: 1.2; padding: 60px; }
+        .hero-image-container img { width: 100%; height: auto; display: block; object-fit: cover; }
+        
+        .hero-content-container { flex: 0.8; padding: 0 8%; }
+        .path-label { font-family: 'Montserrat'; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; font-weight: 600; }
+        .hero-title { font-size: 4rem; font-weight: 300; line-height: 1.1; margin-bottom: 30px; color: #7b868c; }
+        .hero-description { font-size: 1.3rem; color: var(--text-grey); font-style: italic; margin-bottom: 25px; line-height: 1.6; }
+        .hero-subtext { font-family: 'Montserrat'; font-size: 0.8rem; color: #888; letter-spacing: 0.5px; line-height: 1.8; font-weight: 400; }
+
+        /* --- PRODUCT GRID --- */
+        .section-header { text-align: center; padding: 100px 0 60px; }
+        .section-header h2 { font-size: 3rem; font-weight: 400; color: var(--black); }
+        
+        .product-grid { padding: 0 60px 100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 80px 40px; max-width: 1600px; margin: 0 auto; }
+        .product-item { text-align: center; text-decoration: none; color: inherit; transition: 0.4s; }
+        .product-img-wrap { height: 400px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; background: #fff; }
+        .product-img-wrap img { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .product-item:hover img { transform: translateY(-10px); }
+        .product-name { font-family: 'Montserrat'; font-size: 0.75rem; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 8px; }
+        .product-desc { font-style: italic; color: #999; font-size: 1.1rem; }
+
+        /* --- PARTNER SECTION --- */
+        .partner-section { padding: 80px 0; border-top: 1px solid var(--border); background: var(--white); }
+        .logo-grid { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo-grid img { height: 35px; width: auto; }
+
+/* --- FOOTER --- */
+        footer { padding: 80px 40px; background: #fafafa; border-top: 1px solid #eee; }
+        .footer-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 160px); gap: 30px; text-align: left; flex-grow: 1; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600; }
+        
+        .footer-col a { 
+            display: block; 
+            color: #777; 
+            text-decoration: none; 
+            margin-bottom: 12px; 
+            font-size: 1rem; 
+            font-family: 'Cormorant Garamond'; 
+            font-style: normal; 
+        }
+        .footer-col a:hover { color: #000; }
+        
+        .footer-logo-wrap { text-align: right; margin-left: 40px; }
+        .footer-logo-wrap img { width: 160px; margin-bottom: 10px; }
+        .footer-logo-wrap p { font-family: 'Montserrat'; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #bbb; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 900px) {
+            header { padding: 0 20px; }
+            .split-hero { flex-direction: column; }
+            .hero-image-container { padding: 30px 20px; width: 100%; }
+            .hero-content-container { padding: 40px 20px; width: 100%; }
+            .hero-title { font-size: 2.8rem; }
+            .product-grid { grid-template-columns: 1fr; padding: 0 20px 60px; }
+            
+            .footer-container { flex-direction: column; gap: 40px; align-items: flex-start; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; width: 100%; }
+            .footer-logo-wrap { 
+                align-self: flex-end; 
+                text-align: right; 
+                width: 100%; 
+                border-top: 1px solid #eee;
+                padding-top: 40px;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    <div class="main-logo-fixed"><img src="Logo.png" alt="Rento"></div>
+    <div class="lang-switch">EN | FI</div>
+</header>
+
+<section class="split-hero">
+    <div class="hero-image-container">
+        <img src="M1.jpg" alt="Rento Sauna Experience">
+    </div>
+    <div class="hero-content-container">
+        <span class="path-label">Modern Finnish Mastery</span>
+        <h1 class="hero-title">Sauna Thermometers</h1>
+        <p class="hero-description">A small but important piece of equipment to ensure a pleasant sauna experience.</p>
+        <p class="hero-subtext">Match the thermometer to the rest of the sauna supplies or make it a decorative element by harmonising it with the wall panels in the sauna. Our sauna thermometers show temperature in Celsius.</p>
+    </div>
+</section>
+
+<div class="section-header">
+    <h2>The Collection</h2>
+</div>
+
+<section class="product-grid">
+    <a href="m2.html" class="product-item"><div class="product-img-wrap"><img src="M2.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Bamboo</p></a>
+    <a href="m3.html" class="product-item"><div class="product-img-wrap"><img src="M3.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Tar</p></a>
+    <a href="m4.html" class="product-item"><div class="product-img-wrap"><img src="M4.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Champagne</p></a>
+    <a href="m5.html" class="product-item"><div class="product-img-wrap"><img src="M5.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Natural</p></a>
+
+<a href="m6.html" class="product-item"><div class="product-img-wrap"><img src="M6.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Copper</p></a>
+    <a href="m7.html" class="product-item"><div class="product-img-wrap"><img src="M7.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Black</p></a>
+    <a href="m8.html" class="product-item"><div class="product-img-wrap"><img src="M8.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Classic</p></a>
+    <a href="m9.html" class="product-item"><div class="product-img-wrap"><img src="M9.jpg"></div><h3 class="product-name">Rento × Harri Koskinen</h3><p class="product-desc">Thermometer</p></a>
+    <a href="m10.html" class="product-item"><div class="product-img-wrap"><img src="M10.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Grey</p></a>
+    <a href="m11.html" class="product-item"><div class="product-img-wrap"><img src="M11.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">White</p></a>
+    <a href="m12.html" class="product-item"><div class="product-img-wrap"><img src="M12.jpg"></div><h3 class="product-name">Thermometer & Hygrometer</h3><p class="product-desc">Dark Bamboo</p></a>
+    <a href="m13.html" class="product-item"><div class="product-img-wrap"><img src="M13.jpg"></div><h3 class="product-name">Thermometer & Hygrometer</h3><p class="product-desc">Brown / Black</p></a>
+    <a href="m14.html" class="product-item"><div class="product-img-wrap"><img src="M14.jpg"></div><h3 class="product-name">Thermometer & Hygrometer</h3><p class="product-desc">Natural</p></a>
+    <a href="m15.html" class="product-item"><div class="product-img-wrap"><img src="M15.jpg"></div><h3 class="product-name">Sauna Thermometer</h3><p class="product-desc">Dark Bamboo</p></a>
+</section>
+
+<div class="partner-section">
+    <div class="logo-grid">
+        <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg">
+        <img src="7.jpg"><img src="8.jpg"><img src="9.jpg"><img src="10.jpg"><img src="11.jpg">
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>Service</h5>
+                <a href="#">Customer Service</a>
+                <a href="#">Retailers</a>
+            </div>
+            <div class="footer-col">
+                <h5>Press</h5>
+                <a href="#">For Media</a>
+                <a href="#">Imagery</a>
+            </div>
+            <div class="footer-col">
+                <h5>Sustainability</h5>
+                <a href="#">Materials</a>
+                <a href="#">Our Promise</a>
+            </div>
+            <div class="footer-col">
+                <h5>Social</h5>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+        
+        <div class="footer-logo-wrap">
+            <img src="Logo.png" alt="Rento">
+    </div>
+</footer>
+
+</body>
+</html>
