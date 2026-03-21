@@ -11,13 +11,61 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Cormorant Garamond', serif; background: var(--white); color: var(--black); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
 
-        /* --- NAVIGATION --- */
-        header { height: 100px; width: 100%; display: flex; align-items: center; padding: 0 40px; position: fixed; top: 0; background: rgba(255,255,255,0.98); z-index: 1000; border-bottom: 1px solid var(--border); }
-        .nav-back { cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #000; transition: 0.3s; }
-        .nav-back svg { width: 24px; height: 24px; stroke-width: 1.5px; stroke: currentColor; fill: none; }
-        .nav-back:hover { opacity: 0.5; }
-        .main-logo-fixed { position: absolute; left: 50%; transform: translateX(-50%); }
-        .main-logo-fixed img { height: 30px; }
+        /* --- NAVIGATION UPDATES --- */
+header { 
+    height: 100px; 
+    width: 100%; 
+    display: flex; 
+    align-items: center; 
+    padding: 0 40px; 
+    position: fixed; 
+    top: 0; 
+    background: rgba(255,255,255,0.98); 
+    z-index: 1000; 
+    border-bottom: 1px solid var(--border); 
+}
+
+.nav-back { 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    text-decoration: none; 
+    color: #000; 
+    transition: 0.3s; 
+    z-index: 10; 
+}
+
+.nav-back svg { 
+    width: 24px; 
+    height: 24px; 
+    stroke-width: 1.5px; 
+    stroke: currentColor; 
+    fill: none; 
+}
+
+.nav-back:hover { 
+    opacity: 0.5; 
+}
+
+.main-logo-fixed { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.main-logo-fixed img { 
+    height: 30px; 
+    cursor: pointer; 
+}
+
+.lang-switch { 
+    position: absolute; 
+    right: 40px; 
+    font-family: 'Montserrat'; 
+    font-size: 0.65rem; 
+    letter-spacing: 1px; 
+    font-weight: 600; 
+}
 
         /* --- HERO SECTION --- */
         .split-hero { margin-top: 100px; display: flex; min-height: 85vh; align-items: center; background: #fff; flex-wrap: wrap; }
@@ -88,10 +136,18 @@
 <body>
 
 <header>
-    <a href="javascript:history.back()" class="nav-back">
-        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    <a href="pisara.html" class="nav-back">
+        <svg viewBox="0 0 24 24">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
     </a>
-    <div class="main-logo-fixed"><img src="Logo.png" alt="Rento"></div>
+
+    <div class="main-logo-fixed">
+        <img src="Logo.png" alt="Rento" onclick="location.href='index.html'">
+    </div>
+
+    <div class="lang-switch">EN | FI</div>
 </header>
 
 <main>
@@ -167,6 +223,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>
