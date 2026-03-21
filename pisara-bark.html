@@ -4,82 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pisara Sauna Bucket Bark | Rento Design</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        :root { --white: #ffffff; --black: #1a1a1a; --gold: #c5a059; --border: #eeeeee; --text-grey: #555555; --bg-grey: #f9f9f9; }
+        :root { --white: #ffffff; --black: #1a1a1a; --gold: #c5a059; --border: #eeeeee; --bg-footer: #fafafa; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        body { font-family: 'Montserrat', sans-serif; background: var(--white); color: var(--black); line-height: 1.7; -webkit-font-smoothing: antialiased; font-weight: 300; }
-        h1, h2, h3, .product-title { font-family: 'Playfair Display', serif; font-weight: 400; }
+        body { 
+            font-family: 'Cormorant Garamond', serif; 
+            background: var(--white); 
+            color: var(--black); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden;
+        }
 
         /* --- NAVIGATION --- */
-        header { height: 100px; width: 100%; display: flex; align-items: center; justify-content: space-between; position: fixed; top: 0; background: #fff; z-index: 1000; border-bottom: 1px solid var(--border); padding: 0 40px; }
-        
-        .nav-back { cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #000; transition: 0.3s; z-index: 10; }
-        .nav-back svg { width: 24px; height: 24px; stroke-width: 1px; stroke: currentColor; fill: none; }
-        .nav-back:hover { opacity: 0.5; }
+        header { 
+            height: 80px; width: 100%; display: flex; align-items: center; padding: 0 20px; 
+            position: fixed; top: 0; background: #fff; z-index: 1000; 
+            border-bottom: 1px solid var(--border); 
+        }
 
-        .main-logo { position: absolute; left: 50%; transform: translateX(-50%); }
-        .main-logo img { height: 30px; cursor: pointer; }
+        .nav-back { cursor: pointer; display: flex; align-items: center; text-decoration: none; color: #000; z-index: 10; }
+        .nav-back svg { width: 20px; height: 20px; stroke-width: 1.2px; stroke: currentColor; fill: none; }
         
-        .lang-switch { font-size: 0.65rem; letter-spacing: 1px; font-weight: 400; }
+        .main-logo-fixed { position: absolute; left: 50%; transform: translateX(-50%); }
+        .main-logo-fixed img { height: 25px; cursor: pointer; }
+        
+        .lang-switch { 
+            position: absolute; right: 20px; font-family: 'Montserrat'; 
+            font-size: 0.6rem; letter-spacing: 1px; font-weight: 400; 
+        }
 
-        /* --- PRODUCT LAYOUT --- */
-        .product-container { margin-top: 100px; display: flex; min-height: calc(100vh - 100px); }
-        .gallery-section { flex: 1.2; padding: 60px; background: #fff; border-right: 1px solid var(--border); }
-        .main-image { width: 100%; height: 600px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; cursor: zoom-in; }
-        .main-image img { max-width: 90%; max-height: 90%; object-fit: contain; mix-blend-mode: multiply; }
+        /* --- PRODUCT LAYOUT (Desktop & Mobile Friendly) --- */
+        .product-container { 
+            margin-top: 80px; 
+            display: flex; 
+            flex-direction: column; /* Stacks by default for mobile */
+            min-height: calc(100vh - 80px); 
+        }
         
-        .thumbnail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .thumb { aspect-ratio: 1/1; cursor: pointer; border-bottom: 1px solid transparent; transition: 0.3s; opacity: 0.4; background: #fdfdfd; }
+        .gallery-section { 
+            width: 100%; 
+            padding: 40px 20px; 
+            background: #fff; 
+            border-bottom: 1px solid var(--border); 
+        }
+
+        .main-image { 
+            width: 100%; 
+            height: auto; 
+            aspect-ratio: 1/1;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 20px; 
+        }
+        .main-image img { max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+        
+        .thumbnail-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .thumb { aspect-ratio: 1/1; cursor: pointer; border-bottom: 1px solid transparent; opacity: 0.6; transition: 0.3s; }
         .thumb.active, .thumb:hover { border-bottom: 1px solid var(--black); opacity: 1; }
         .thumb img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
 
-        .details-section { flex: 0.8; padding: 80px 100px; }
-        .breadcrumb { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: #bbb; margin-bottom: 40px; font-weight: 300; }
-        .product-title { font-size: 3.2rem; margin-bottom: 10px; line-height: 1.1; }
-        .product-subtitle { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; display: block; font-weight: 400; }
+        .details-section { width: 100%; padding: 40px 20px; }
         
-        .product-description { font-size: 0.95rem; color: var(--black); margin-bottom: 50px; font-weight: 300; line-height: 1.9; letter-spacing: 0.02em; }
+        .breadcrumb { font-family: 'Montserrat'; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 2px; color: #bbb; margin-bottom: 20px; }
+        .product-title { font-size: 2.5rem; font-weight: 300; margin-bottom: 5px; line-height: 1.1; }
+        .product-subtitle { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 30px; display: block; font-weight: 400; }
+        .product-description { font-size: 1.1rem; color: #444; margin-bottom: 30px; font-style: italic; }
         
-        .purchase-cta { margin-bottom: 40px; }
-        .btn-partner { display: inline-block; background: var(--black); color: white; padding: 18px 45px; text-decoration: none; font-size: 0.7rem; font-weight: 400; text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; border: 1px solid var(--black); }
-        .btn-partner:hover { background: transparent; color: var(--black); }
+        .btn-partner { 
+            display: block; width: 100%; text-align: center; background: var(--black); color: white; padding: 18px 0; 
+            text-decoration: none; font-family: 'Montserrat'; font-size: 0.65rem; 
+            font-weight: 500; text-transform: uppercase; letter-spacing: 3px; border: 1px solid var(--black); 
+        }
 
-        .badge-partner-row { display: flex; align-items: center; gap: 40px; margin: 40px 0; padding: 30px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
-.badge-item { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; text-decoration: none; color: inherit; }
-        .badge-item img { height: 50px; object-fit: contain; opacity: 0.9; }
-        .badge-item p { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: #999; line-height: 1.4; font-weight: 400; }
+.badge-partner-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 30px 0; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .badge-item { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; font-family: 'Montserrat'; font-size: 0.5rem; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+        .badge-item img { height: 35px; }
 
-        .info-grid { margin-top: 40px; padding-top: 20px; }
-        .info-row { display: grid; grid-template-columns: 140px 1fr; margin-bottom: 12px; font-size: 0.8rem; }
-        .info-label { font-weight: 400; text-transform: uppercase; letter-spacing: 1px; color: #888; }
-        .info-value { color: var(--black); font-weight: 300; }
+        .info-row { display: grid; grid-template-columns: 100px 1fr; margin-bottom: 10px; font-size: 0.8rem; }
+        .info-label { font-family: 'Montserrat'; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.55rem; }
+        .info-value { font-style: italic; color: #666; }
 
-        /* --- FOSTER FOOTER --- */
-        .partner-logos-area { border-top: 1px solid #eee; padding: 100px 40px; text-align: center; }
-        .logo-grid { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
-        .logo-grid img { height: 22px; opacity: 0.6; }
+        /* --- PARTNERS --- */
+        .partners-section { padding: 60px 20px; border-top: 1px solid var(--border); text-align: center; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: center; }
+        .partners-grid img { width: 100%; max-width: 80px; margin: 0 auto; }
 
-        footer { padding: 100px 40px; background: var(--bg-grey); border-top: 1px solid var(--border); }
-        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; }
-        .footer-links-wrap { display: grid; grid-template-columns: repeat(4, 160px); gap: 40px; text-align: left; }
-        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.6rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 25px; font-weight: 500; color: #222; }
-        .footer-col a { display: block; color: #888; text-decoration: none; margin-bottom: 12px; font-size: 0.85rem; transition: 0.3s; font-weight: 300; }
-        .footer-col a:hover { color: #000; }
-        .footer-logo-wrap { text-align: right; }
-        .footer-logo-wrap img { width: 150px; margin-bottom: 15px; opacity: 0.8; }
-        .footer-logo-wrap p { font-family: 'Montserrat'; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 3px; color: #ccc; }
+        /* --- FOOTER --- */
+        footer { padding: 60px 20px; background: var(--bg-footer); border-top: 1px solid #eee; }
+        .footer-container { display: flex; flex-direction: column; gap: 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-weight: 600; color: #000; }
+        .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 10px; font-family: 'Cormorant Garamond'; font-size: 1rem; }
+        
+        .footer-logo-wrap { border-top: 1px solid #eee; padding-top: 40px; text-align: left; }
+        .footer-logo-wrap img { width: 140px; margin-bottom: 10px; filter: brightness(0); }
+        .footer-logo-wrap p { font-family: 'Montserrat'; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 2px; color: #bbb; }
 
-        @media (max-width: 1024px) {
-            .product-container { flex-direction: column; }
-            .gallery-section { padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--border); }
-            .details-section { padding: 60px 40px; }
-            .footer-container { flex-direction: column; gap: 80px; }
-            .footer-links-wrap { grid-template-columns: repeat(2, 1fr); width: 100%; }
-            .footer-logo-wrap { text-align: left; width: 100%; border-top: 1px solid #eee; padding-top: 40px; }
+        /* --- DESKTOP ADJUSTMENTS --- */
+        @media (min-width: 1024px) {
+            header { padding: 0 40px; height: 100px; }
+            .main-logo-fixed img { height: 30px; }
+            .product-container { margin-top: 100px; flex-direction: row; }
+            .gallery-section { width: 60%; padding: 80px; border-right: 1px solid var(--border); border-bottom: none; }
+            .details-section { width: 40%; padding: 80px 60px; }
+            .product-title { font-size: 3.5rem; }
+            .btn-partner { width: auto; padding: 18px 60px; }
+            .partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; }
+            .partners-grid img { height: 28px; width: auto; }
+            .footer-container { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+            .footer-grid { grid-template-columns: repeat(4, 160px); }
+            .footer-logo-wrap { border-top: none; padding-top: 0; text-align: right; }
         }
     </style>
 </head>
@@ -87,16 +127,18 @@
 
 <header>
     <a href="pisara.html" class="nav-back">
-        <svg viewBox="0 0 24 24"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg>
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
     </a>
-    <div class="main-logo" onclick="location.href='index.html'"><img src="Logo.png"></div>
+    <div class="main-logo-fixed">
+        <img src="Logo.png" alt="Rento" onclick="location.href='index.html'">
+    </div>
     <div class="lang-switch">EN | FI</div>
 </header>
 
-<div class="product-container">
+<main class="product-container">
     <div class="gallery-section">
         <div class="main-image">
-            <img src="T7.jpg" id="mainImg" alt="Pisara Sauna Bucket Bark">
+            <img src="T7.jpg" id="mainImg">
         </div>
         <div class="thumbnail-grid">
             <div class="thumb active" onclick="changeImg('T7.jpg', 0)"><img src="T7.jpg"></div>
@@ -106,14 +148,14 @@
         </div>
     </div>
 
-    <div class="details-section">
+
+<div class="details-section">
         <div class="breadcrumb">Accessories / Buckets</div>
-        <h1 class="product-title">Pisara Sauna Bucket</h1>
+        <h1 class="product-title">Pisara Bucket</h1>
         <span class="product-subtitle">Bark</span>
         
         <p class="product-description">
-
-Beautifully drop shaped sauna bucket made of biocomposite in Finland. The clean lines and Scandinavian design are purely the result of Finnish craftsmanship. The durable natural fibre composite is pleasant to the touch and an excellent choice for the heat and humidity of the sauna. 
+            Beautifully drop shaped sauna bucket made of biocomposite in Finland. The durable natural fibre composite is pleasant to the touch.
         </p>
 
         <div class="purchase-cta">
@@ -123,22 +165,21 @@ Beautifully drop shaped sauna bucket made of biocomposite in Finland. The clean 
         </div>
 
         <div class="badge-partner-row">
-            <div class="badge-item"><img src="badge-design.png" alt="Designed in Finland"><p>Finnish<br>Design</p></div>
-            <div class="badge-item"><img src="Badge-key.png" alt="Key Flag Symbol"><p>Made in<br>Finland</p></div>
-            <a href="https://www.touchoffinland.com/" target="_blank" class="badge-item"><img src="7.jpg" alt="Partner"><p>Retail<br>Partner</p></a>
+            <div class="badge-item"><img src="badge-design.png"><p>Finnish Design</p></div>
+            <div class="badge-item"><img src="Badge-key.png"><p>Made in Finland</p></div>
+            <div class="badge-item"><img src="7.jpg"><p>Retail Partner</p></div>
         </div>
 
         <div class="info-grid">
-            <div class="info-row"><span class="info-label">Material</span><span class="info-value">Biocomposite.</span></div>
-            <div class="info-row"><span class="info-label">Capacity</span><span class="info-value">5 Litres</span></div>
-            <div class="info-row"><span class="info-label">Family</span><span class="info-value">Pisara</span></div>
+            <div class="info-row"><span class="info-label">Material</span><span class="info-value">Biocomposite</span></div>
+            <div class="info-row"><span class="info-label">Capacity</span><span class="info-value">5 L</span></div>
             <div class="info-row"><span class="info-label">Origin</span><span class="info-value">Finland</span></div>
         </div>
     </div>
-</div>
+</main>
 
-<div class="partner-logos-area">
-    <div class="logo-grid">
+<div class="partners-section">
+    <div class="partners-grid">
         <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg">
         <img src="7.jpg"><img src="8.jpg"><img src="9.jpg"><img src="10.jpg"><img src="11.jpg">
     </div>
@@ -146,11 +187,16 @@ Beautifully drop shaped sauna bucket made of biocomposite in Finland. The clean 
 
 <footer>
     <div class="footer-container">
-        <div class="footer-links-wrap">
+        <div class="footer-grid">
             <div class="footer-col">
                 <h5>Service</h5>
                 <a href="#">Contact</a>
                 <a href="#">Retailers</a>
+            </div>
+            <div class="footer-col">
+                <h5>Press</h5>
+                <a href="#">For Media</a>
+                <a href="#">Imagery</a>
             </div>
             <div class="footer-col">
                 <h5>Sustainability</h5>
@@ -159,18 +205,13 @@ Beautifully drop shaped sauna bucket made of biocomposite in Finland. The clean 
             </div>
             <div class="footer-col">
                 <h5>Social</h5>
-                <a href="#">Instagram</a>
                 <a href="#">Facebook</a>
-            </div>
-            <div class="footer-col">
-                <h5>Media</h5>
-                <a href="#">Imagery</a>
-                <a href="#">Press</a>
+                <a href="#">Instagram</a>
             </div>
         </div>
         <div class="footer-logo-wrap">
             <img src="Logo.png" alt="Rento">
-            
+           
     </div>
 </footer>
 
