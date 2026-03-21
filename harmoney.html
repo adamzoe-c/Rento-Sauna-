@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Harmony of Sauna | Rento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --white: #ffffff; --black: #1a1a1a; --gold: #c5a059; --border: #eeeeee; --bg-footer: #fafafa; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Cormorant Garamond', serif; 
+            background: var(--white); 
+            color: var(--black); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden;
+        }
+
+        /* --- FIXED CENTERED HEADER --- */
+        header { 
+            height: 80px; width: 100%; 
+            display: grid; 
+            grid-template-columns: 60px 1fr 60px; /* Forces three equal sections */
+            align-items: center; 
+            padding: 0 20px; 
+            position: fixed; top: 0; 
+            background: #fff; 
+            z-index: 2000; 
+            border-bottom: 1px solid var(--border); 
+        }
+
+        .nav-back { grid-column: 1; display: flex; align-items: center; text-decoration: none; color: #000; }
+        .nav-back svg { width: 22px; height: 22px; stroke-width: 1.2px; stroke: currentColor; fill: none; }
+        
+        .main-logo-fixed { grid-column: 2; display: flex; justify-content: center; align-items: center; }
+        .main-logo-fixed img { height: 22px; cursor: pointer; }
+        
+        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; position: relative; font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 1px; }
+        .lang-trigger { cursor: pointer; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+        
+        .lang-dropdown { 
+            position: absolute; top: 100%; right: 0; background: #fff; border: 1px solid var(--border); 
+            padding: 10px 0; min-width: 100px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
+        .lang-dropdown.active { display: block; }
+        .lang-dropdown a { display: block; padding: 8px 15px; text-decoration: none; color: #888; transition: 0.3s; font-size: 0.6rem; }
+
+        /* --- HERO --- */
+        .harmony-hero { margin-top: 80px; height: 65vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        .hero-content h1 { font-size: 2.5rem; font-weight: 300; color: var(--white); text-align: center; padding: 0 20px; line-height: 1.1; }
+
+        /* --- CONTENT --- */
+        .content-split { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .split-text h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 25px; font-style: italic; line-height: 1.2; }
+        .split-text p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
+        .split-image { width: 100%; margin-top: 40px; }
+        .split-image img { width: 100%; height: auto; display: block; }
+
+        /* --- ARTICLES SECTION --- */
+        .section-title { 
+            text-align: center; font-family: 'Cormorant Garamond'; font-size: 3rem; 
+            font-weight: 300; font-style: italic; letter-spacing: 2px; margin: 80px 0 40px; 
+        }
+
+        .article-grid { display: grid; grid-template-columns: 1fr; gap: 40px; padding: 0 20px; max-width: 1400px; margin: 0 auto; }
+        .news-article { display: none; text-decoration: none; color: inherit; }
+        .news-article.active { display: block; }
+
+.news-article img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; }
+        .news-date { font-family: 'Montserrat'; font-size: 0.6rem; color: #bbb; text-transform: uppercase; }
+        .news-tags { display: block; font-family: 'Montserrat'; font-size: 0.55rem; color: var(--gold); margin: 5px 0 10px; text-transform: uppercase; }
+        .news-article h4 { font-size: 1.5rem; font-weight: 400; line-height: 1.2; }
+
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 60px 0; font-family: 'Montserrat'; font-size: 0.7rem; }
+        .p-num { cursor: pointer; color: #ccc; padding: 5px 8px; }
+        .p-num.active { color: #000; font-weight: 700; border-bottom: 1px solid #000; }
+        .p-btn { cursor: pointer; font-weight: 600; text-transform: uppercase; }
+
+        /* --- FOOTER & PARTNERS --- */
+        .partners-section { padding: 60px 20px; border-top: 1px solid var(--border); text-align: center; }
+        .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .partners-grid img { width: 100%; max-width: 60px; margin: 0 auto; }
+
+        footer { padding: 60px 20px; background: var(--bg-footer); border-top: 1px solid #eee; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
+        .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 8px; font-size: 1rem; }
+        .footer-logo-wrap { border-top: 1px solid #eee; padding-top: 30px; margin-top: 30px; }
+        .footer-logo-wrap img { width: 120px; filter: brightness(0); }
+
+        /* --- DESKTOP ADJUSTMENTS --- */
+        @media (min-width: 1024px) {
+            header { height: 100px; padding: 0 40px; grid-template-columns: 100px 1fr 100px; }
+            .main-logo-fixed img { height: 28px; }
+            .harmony-hero { height: 85vh; margin-top: 100px; }
+            .hero-content h1 { font-size: 5rem; }
+            .content-split { padding: 120px 40px; display: flex; align-items: center; gap: 100px; }
+            .split-text { flex: 1; }
+            .split-image { flex: 1; margin-top: 0; }
+            .article-grid { grid-template-columns: repeat(3, 1fr); }
+            .partners-grid { display: flex; justify-content: center; gap: 60px; }
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+            .footer-logo-wrap { text-align: right; border-top: none; padding-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    
+    <div class="main-logo-fixed">
+        <img src="Logo.png" alt="Rento" onclick="location.href='index.html'">
+    </div>
+    
+    <div class="lang-container">
+        <div class="lang-trigger" id="langBtn">EN | FI</div>
+        <div class="lang-dropdown" id="langMenu">
+            <a href="#">English</a>
+            <a href="#">Suomi</a>
+        </div>
+    </div>
+</header>
+
+<section class="harmony-hero">
+    <img src="Harmony-Hero.jpg" alt="Atmosphere" class="hero-bg">
+    <div class="hero-content">
+        <h1>Authentic Sauna Experience</h1>
+    </div>
+</section>
+
+<section class="content-split">
+    <div class="split-text">
+        <h2>Connection to nature is<br>a scarce luxury nowadays.</h2>
+        <p>Through the authentic sauna experience you can find it in your home. Rento has been a big part of the Finnish sauna experience for over 15 years.</p>
+    </div>
+    <div class="split-image">
+        <img src="Harmony-Detail-1.jpg" alt="Nature Connection">
+    </div>
+</section>
+
+
+<h2 class="section-title" id="article-head">News and Articles</h2>
+        <div class="article-grid">
+            <a href="article-bucket-making.html" class="news-article p1 active"><img src="A22.jpg"><span class="news-date">October 20, 2025</span><span class="news-tags">manufacturingprocess, rentosauna, saunabuckets</span><h4>In the process of making Rento sauna bucket</h4><p class="news-excerpt">The Rento sauna bucket is a timelessly stylish design...</p></a>
+            <a href="article-photography.html" class="news-article p1 active"><img src="A23.jpg"><span class="news-date">September 22, 2025</span><span class="news-tags">rento, rentosauna, theharmonyofsauna</span><h4>Brand photography - the quiet power</h4><p class="news-excerpt">When a brand tells its story, words are not...</p></a>
+            <a href="article-ice-crystal.html" class="news-article p1 active"><img src="A24.jpg"><span class="news-date">March 30, 2025</span><span class="news-tags">ice crystal, jääkide, rentosauna</span><h4>Crystal is a new form of sauna scent</h4><p class="news-excerpt">Rento Ice Crystal is a menthol-scented sauna scent in...</p></a>
+            <a href="article-heighten-senses.html" class="news-article p2"><img src="A25.jpg"><span class="news-date">March 24, 2025</span><span class="news-tags">löylytuoksut, rento, sauna scents</span><h4>Rento Sauna scents heighten your senses</h4><p class="news-excerpt">Adding a favourite sauna scent in the sauna bucket...</p></a>
+            <a href="article-solid-bars.html" class="news-article p2"><img src="A26.jpg"><span class="news-date">February 24, 2025</span><span class="news-tags">articles, soap bars, sustainable</span><h4>Solid bars meet development challenges</h4><p class="news-excerpt">Compact size and active ingredients from nature. The new...</p></a>
+            <a href="article-pereensaaren.html" class="news-article p2"><img src="A27.jpg"><span class="news-date">February 4, 2025</span><span class="news-tags">articles, Pereensaaren, Saunayrittäjä</span><h4>Sauna entrepreneur in Pereensaaren sauna</h4><p class="news-excerpt">The sauna entrepreneur is an entrepreneur in a positive...</p></a>
+            <a href="article-ice-swimming.html" class="news-article p3"><img src="A28.jpg"><span class="news-date">January 13, 2025</span><span class="news-tags">ice swimming, Kenno, rentosauna</span><h4>The benefits of ice swimming</h4><p class="news-excerpt">Ice swimming is a popular health sport in Finland.</p></a>
+            <a href="article-bamboo-trends.html" class="news-article p3"><img src="A29.jpg"><span class="news-date">January 2, 2025</span><span class="news-tags">bamboo, interior trends, news</span><h4>Cosy dark brown delights in sauna products</h4><p class="news-excerpt">Dark brown is a elegant new colour for Rento's...</p></a>
+            <a href="article-loviisa.html" class="news-article p3"><img src="A30.jpg"><span class="news-date">June 7, 2023</span><span class="news-tags">housing fair, loviisanasuntomessut, news</span><h4>Rento at the Loviisa Housing Fair</h4><p class="news-excerpt">Rento has made its way into the saunas and...</p></a>
+            <a href="article-aesthetics.html" class="news-article p4"><img src="A31.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">minimalistic, natural, sauna aesthetics</span><h4>Safe and familiar - Sauna aesthetics</h4><p class="news-excerpt">Natural, dim and minimalistic. This is how Laura Seesmeri...</p></a>
+            <a href="article-pisara.html" class="news-article p4"><img src="A32.jpg"><span class="news-date">May 9, 2023</span><span class="news-tags">Pisara, wash basin, design</span><h4>6 reasons why the Rento Pisara is perfect</h4><p class="news-excerpt">We have compiled six good reasons why the drop-shaped...</p></a>
+
+
+<a href="article-drop-shape.html" class="news-article p4"><img src="A33.jpg"><span class="news-date">April 25, 2023</span><span class="news-tags">basin, industrial designer, drop</span><h4>Wash basin takes the shape of a drop</h4><p class="news-excerpt">When industrial designer Ismo Reponen from IrePoint Oy...</p></a>
+            <a href="article-christmas.html" class="news-article p5"><img src="A34.jpg"><span class="news-date">December 7, 2022</span><span class="news-tags">Christmas Sauna, traditions, celebrations</span><h4>Christmas sauna an atmospheric way</h4><p class="news-excerpt">Christmas sauna, which is a tradition originating in...</p></a>
+            <a href="article-summer-gifts.html" class="news-article p5"><img src="A35.jpg"><span class="news-date">July 1, 2022</span><span class="news-tags">gift, pampering, summer gifts</span><h4>Relaxing summer gifts for sauna lovers</h4><p class="news-excerpt">Summer visits. The hot question is: what kind of gifts...</p></a>
+            <a href="article-boost-look.html" class="news-article p5"><img src="A36.jpg"><span class="news-date">July 1, 2022</span><span class="news-tags">trendy, hot rooms, textiles</span><h4>Boost the look of your sauna!</h4><p class="news-excerpt">Large-scale upgrades are not always needed. Instead...</p></a>
+            <a href="article-memories.html" class="news-article p6"><img src="A37.jpg"><span class="news-date">June 28, 2022</span><span class="news-tags">cottage, summer house, memories</span><h4>Summer house sauna relaxation</h4><p class="news-excerpt">Finns know that the sauna, heating it and bathing in...</p></a>
+        </div>
+
+        <div class="pagination">
+            <span class="p-btn" onclick="changeP(-1)">‹ Previous</span>
+            <span class="p-num active" onclick="goPage(1)">1</span>
+            <span class="p-num" onclick="goPage(2)">2</span>
+            <span class="p-num" onclick="goPage(3)">3</span>
+            <span class="p-num" onclick="goPage(4)">4</span>
+            <span class="p-num" onclick="goPage(5)">5</span>
+            <span class="p-num" onclick="goPage(6)">6</span>
+            <span class="p-btn" onclick="changeP(1)">Next ›</span>
+        </div>
+
+<div class="modal" id="ritualModal">
+    <span class="modal-close" onclick="closeModal()">×</span>
+    <img id="modalImg" src="">
+</div>
+
+
+<div class="partners-section">
+    <div class="partners-grid">
+        <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg">
+        <img src="7.jpg"><img src="8.jpg"><img src="9.jpg"><img src="10.jpg"><img src="11.jpg">
+    </div>
+</div>
+
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="retailers.html">Retailers</a></div>
+        <div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
+        <div class="footer-col"><h5>Sustainability</h5><a href="materials.html">Materials</a><a href="promise.html">Our Promise</a></div>
+        <div class="footer-col"><h5>Social</h5>
+            <a href="https://www.facebook.com/share/17G4i5g1g9/">Facebook</a>
+            <a href="https://www.instagram.com/rentosauna/">Instagram</a>
+        </div>
+        <div class="footer-logo-wrap"><img src="Logo.png"></div>
+    </div>
+</footer>
+
+<script>
+    // Language Dropdown
+    const langBtn = document.getElementById('langBtn');
+    const langMenu = document.getElementById('langMenu');
+    langBtn.addEventListener('click', (e) => { e.stopPropagation(); langMenu.classList.toggle('active'); });
+    document.addEventListener('click', () => langMenu.classList.remove('active'));
+
+    // Pagination
+    let curPage = 1;
+    function goPage(n) {
+        curPage = n;
+        document.querySelectorAll('.news-article').forEach(a => a.classList.remove('active'));
+        document.querySelectorAll('.p' + n).forEach(a => a.classList.add('active'));
+        document.querySelectorAll('.p-num').forEach((num, idx) => num.classList.toggle('active', (idx+1) === n));
+    }
+    function changeP(dir) {
+        let n = curPage + dir;
+        if(n >= 1 && n <= 3) goPage(n);
+    }
+</script>
+
+</body>
+</html>
