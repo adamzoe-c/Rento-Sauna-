@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In the process of making Rento sauna bucket | Rento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --white: #ffffff; --black: #1a1a1a; --border: #eeeeee; --grey: #777777; --bg-alt: #fafafa; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Cormorant Garamond', serif; 
+            background: var(--white); 
+            color: var(--black); 
+            line-height: 1.8; 
+            -webkit-font-smoothing: antialiased; 
+        }
+
+        /* --- STABLE CENTERED HEADER --- */
+        header { 
+            height: 80px; width: 100%; 
+            display: grid; 
+            grid-template-columns: 80px 1fr 80px; /* Three columns for perfect centering */
+            align-items: center; 
+            padding: 0 20px; 
+            position: fixed; top: 0; 
+            background: #fff; 
+            z-index: 2000; 
+            border-bottom: 1px solid var(--border); 
+        }
+
+        .nav-back { grid-column: 1; display: flex; align-items: center; text-decoration: none; color: #000; }
+        .nav-back svg { width: 22px; height: 22px; stroke-width: 1.2px; stroke: currentColor; fill: none; }
+        
+        /* Centered Logo */
+        .main-logo-fixed { grid-column: 2; display: flex; justify-content: center; align-items: center; }
+        .main-logo-fixed img { height: 20px; cursor: pointer; display: block; }
+        
+        /* Right Languages */
+        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; align-items: center; font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 1px; }
+        .lang-trigger { cursor: pointer; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+
+        /* --- ARTICLE CONTENT --- */
+        article { margin-top: 80px; padding-bottom: 100px; }
+
+        /* Hero Image */
+        .article-hero { width: 100%; height: 50vh; overflow: hidden; position: relative; }
+        .article-hero img { width: 100%; height: 100%; object-fit: cover; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+
+        /* Meta Info */
+        .meta { font-family: 'Montserrat'; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; color: #aaa; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .meta span { color: var(--black); font-weight: 600; }
+
+        /* Headlines */
+        h1 { font-size: 2.6rem; font-weight: 300; line-height: 1.1; margin-bottom: 35px; }
+        h2 { font-size: 1.8rem; font-weight: 300; margin: 50px 0 25px; font-style: italic; }
+
+        /* Body Text */
+        p { font-size: 1.15rem; margin-bottom: 25px; color: #333; }
+        .blockquote { font-size: 1.3rem; font-style: italic; color: #555; border-left: 2px solid #000; padding-left: 25px; margin: 40px 0; }
+
+        /* Inline Images */
+        .img-full { width: 100%; margin: 40px 0; }
+        .img-full img { width: 100%; height: auto; display: block; }
+
+        /* Three Image Row */
+        .img-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 40px 0; }
+        .img-row img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+
+        /* --- SHARE SECTION --- */
+        .share-section { border-top: 1px solid #eee; padding-top: 40px; margin-top: 60px; text-align: center; }
+        .share-section h5 { font-family: 'Montserrat'; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px; }
+
+.share-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; font-family: 'Montserrat'; font-size: 0.55rem; text-transform: uppercase; font-weight: 600; }
+        .share-links a { text-decoration: none; color: #888; border: 1px solid #eee; padding: 8px 12px; transition: 0.3s; }
+        .share-links a:hover { color: #000; border-color: #000; }
+        
+ /* PARTNERS SECTION */
+        .partners-section { padding: 100px 0; border-top: 1px solid var(--border); }
+        .partners-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+        .partners-grid img { height: 22px; filter: none; opacity: 1; }
+
+        /* MODAL */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); z-index: 3000; display: none; align-items: center; justify-content: center; }
+        .modal img { max-height: 85vh; max-width: 90%; }
+        .modal-close { position: absolute; top: 30px; right: 30px; font-size: 2.5rem; cursor: pointer; font-family: 'Montserrat'; font-weight: 100; }
+
+        /* FOOTER */
+        footer { padding: 100px 40px; background: #fafafa; border-top: 1px solid #eee; }
+        .footer-grid { display: grid; grid-template-columns: repeat(5, 1fr) 1.5fr; gap: 30px; text-align: left; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; }
+        .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 12px; font-size: 0.85rem; }
+        .footer-logo-wrap { text-align: right; }
+        .footer-logo-wrap img { width: 160px; }
+
+      
+       /* --- MOBILE ADJUSTMENTS --- */
+        @media (max-width: 1024px) { 
+            .article-grid { grid-template-columns: repeat(2, 1fr); } 
+            .collection-item { flex: 0 0 calc(50% - 15px); min-width: calc(50% - 15px); }
+            .arrow-left { left: 10px; } .arrow-right { right: 10px; }
+        }
+
+        @media (max-width: 768px) { 
+            .arrival-grid { grid-template-columns: repeat(2, 1fr); }
+
+.ritual-grid { grid-template-columns: repeat(3, 1fr); } 
+            .footer-grid { grid-template-columns: 1fr; } 
+            .sidebar { width: 100%; left: -100%; }
+            .badge-row { flex-direction: column; gap: 40px; align-items: center; }
+            .collection-item { flex: 0 0 100%; min-width: 100%; }
+            .coll-img { height: 350px; }
+            .article-grid { grid-template-columns: 1fr; }
+            .pagination { gap: 5px; }
+            .p-num { width: 35px; height: 35px; font-size: 0.7rem; }
+            .p-btn { font-size: 0.6rem; letter-spacing: 1px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="harmony.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    
+    <div class="main-logo-fixed">
+        <img src="Logo.png" alt="Rento" onclick="location.href='index.html'">
+    </div>
+    
+    <div class="lang-container">
+        <span class="lang-trigger">EN | FI</span>
+    </div>
+</header>
+
+<article>
+    <div class="article-hero">
+        <img src="A22.jpg" alt="Manufacturing Rento">
+    </div>
+
+    <div class="container">
+        <div class="meta">
+            October 20, 2025 | <span>Articles, News</span>
+        </div>
+
+        <h1>In the process of making Rento sauna bucket</h1>
+
+        <p>The Rento sauna bucket is a timelessly stylish design classic in the Rento collection. The handle is made of heat-treated bamboo, shaped to fit comfortably in the hand. The metal parts are color-anodized aluminum, which enhances the product’s durability and gives it a refined finish.</p>
+
+        <div class="img-full">
+            <img src="20.jpg" alt="Anu Nevalainen Factory Visit">
+        </div>
+
+        <p>Rento Product Manager Anu Nevalainen visited the origins of the Rento sauna bucket’s production at a factory in China and shared insights about how this classic was born:</p>
+
+        <div class="blockquote">
+            “It is always very interesting to see our products being made and to understand the different stages of production. It’s also important to observe in person that workplace safety is in order.”
+        </div>
+
+        <h2>Following handicrafts and quality</h2>
+        <p>At the factory, it’s possible to see how Rento products come to life in practice—step by step. Many stages are still entirely handmade. This not only ensures the uniqueness of each product but also requires special skill and precision from the makers.</p>
+
+        <div class="img-row">
+            <img src="21.jpg" alt="Production Detail 1">
+            <img src="22.jpg" alt="Production Detail 2">
+            <img src="23.jpg" alt="Production Detail 3">
+        </div>
+
+        <h2>Collaboration and new ideas</h2>
+        <p>The significance of the visits isn’t limited to just monitoring production. They deepen collaboration with suppliers, help solve potential challenges quickly, and generate new ideas.</p>
+
+        <p>Do you already own a Rento sauna bucket?</p>
+
+        <div class="share-section">
+            <h5>Share This Story</h5>
+            <div class="share-links">
+                <a href="#">Facebook</a>
+                <a href="#">X</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">Pinterest</a>
+                <a href="#">Email</a>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+        <div class="partners-section">
+           
+            <div class="partners-grid">
+                <img src="1.jpg"><img src="2.jpg"><img src="3.jpg"><img src="4.jpg"><img src="5.jpg"><img src="6.jpg">
+                <img src="7.jpg"><img src="8.jpg"><img src="9.jpg"><img src="10.jpg"><img src="11.jpg">
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal" id="ritualModal">
+    <span class="modal-close" onclick="closeModal()">×</span>
+    <img id="modalImg" src="">
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="retailers.html">Retailers</a></div>
+        <div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
+        <div class="footer-col"><h5>Sustainability</h5><a href="materials.html">Materials</a><a href="promise.html">Our Promise</a></div>
+        <div class="footer-col"><h5>Social</h5>
+            <a href="https://www.facebook.com/share/17G4i5g1g9/">Facebook</a>
+            <a href="https://www.instagram.com/rentosauna/">Instagram</a>
+        </div>
+        <div class="footer-logo-wrap"><img src="Logo.png"></div>
+    </div>
+</footer>
+</body>
+</html>
