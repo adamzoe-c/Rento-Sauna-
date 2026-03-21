@@ -11,13 +11,8 @@
             --white: #ffffff; --black: #1a1a1a; --border: rgba(0,0,0,0.05);
             --forest: #080808; 
             --earth: #f7f6f6;  
-            --gold: #c5a059;   
-            
-            /* Retailer Specific Colors */
-            --c-superior: #292a6d; --c-finnstyle: #5b98cc; --c-touch: #680000;
-            --c-saunastore: #009640; --c-saunaspares: #4a4a4a;
-            --c-krauta: #4b0fff; --c-prisma: #009640; 
-            --c-galaxus: #007d93; --c-epharmacy: #203a71;
+            --gold: #2b2ec7;   
+            --success: #27ae60;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,32 +41,42 @@
         .main-logo-fixed { grid-column: 2; display: flex; justify-content: center; align-items: center; }
         .main-logo-fixed img { height: 18px; cursor: pointer; }
         
-        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 1px; font-weight: 700; color: var(--forest); }
+        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; font-family: 'Montserrat'; font-size: 0.65rem; font-weight: 700; color: var(--forest); }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 70px auto 0; /* Align below fixed header */
+            padding: 20px;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            height: 350px; /* Mobile height */
+            background-image: url('hero-image.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
 
         /* --- CONTENT WRAPPER --- */
-        main { margin-top: 70px; padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        main { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
 
-        /* FLUID HEADLINE FIX */
         .page-header { 
             text-align: center; 
-            margin-bottom: clamp(40px, 8vh, 100px); 
-            padding-top: 40px; 
-            animation: fadeInDown 1s ease-out;
+            margin-top: 20px; 
+            margin-bottom: 60px; 
         }
         
         .page-header h1 { 
-            /* Scalable font: Min 2.2rem, Max 5rem, Scales with 5% of viewport width */
-            font-size: clamp(2.2rem, 5vw, 5rem); 
+            font-size: clamp(2.2rem, 6vw, 5rem); 
             font-weight: 300; 
             font-style: italic; 
             color: var(--forest); 
-            line-height: 1.1;
+            line-height: 1.1; 
             letter-spacing: -1px;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* REGION BLOCKS */
@@ -86,56 +91,67 @@
 
         /* --- RETAILER CARDS --- */
         .retailer-card { 
-            display: grid; 
-            grid-template-columns: 70px 1fr; 
-            align-items: center;
+            display: grid; grid-template-columns: 70px 1fr; align-items: center;
             padding: 20px; background: var(--white); border-radius: 8px;
             text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
-
 .retailer-card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-
         .retailer-logo { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
         .retailer-logo img { width: 100%; height: auto; object-fit: contain; }
-        
         .retailer-info { padding-left: 10px; }
         .retailer-info h3 { font-size: 1.3rem; font-weight: 400; color: var(--forest); line-height: 1.2; }
-        .retailer-info p { font-family: 'Montserrat'; font-size: 0.6rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        
+        .stock-status { font-family: 'Montserrat'; font-size: 0.55rem; font-weight: 700; color: var(--success); display: flex; align-items: center; gap: 5px; margin-top: 4px; letter-spacing: 1px; }
+        .dot { height: 6px; width: 6px; background-color: var(--success); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
         .visit-btn { 
-            grid-column: 1 / span 2; 
-            margin-top: 15px; text-align: center;
+            grid-column: 1 / span 2; margin-top: 15px; text-align: center;
             background: var(--forest); color: white; font-family: 'Montserrat'; 
             font-size: 0.65rem; font-weight: 700; text-transform: uppercase; 
             padding: 12px; border-radius: 4px; transition: 0.3s;
         }
 
+        /* --- BECOME A PARTNER SECTION --- */
+        .partner-cta {
+            margin: 40px 0;
+            padding: 50px 20px;
+            background: var(--white);
+            border: 1px dashed #ddd;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .partner-cta h2 { font-family: 'Cormorant Garamond'; font-size: 2.2rem; font-weight: 300; margin-bottom: 10px; }
+        .partner-cta p { font-family: 'Montserrat'; font-size: 0.75rem; color: #777; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
+        .partner-link-btn {
+            display: inline-block;
+            background: var(--forest);
+            color: white;
+            text-decoration: none;
+            font-family: 'Montserrat';
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 16px 45px;
+            border-radius: 4px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .partner-link-btn:hover { background: var(--gold); transform: translateY(-2px); }
+
         /* --- DESKTOP ADJUSTMENTS --- */
         @media (min-width: 768px) {
             header { height: 80px; }
+            .hero-section { margin-top: 100px; padding: 0 40px; }
+            .hero-image-wrapper { height: 500px; }
             .main-logo-fixed img { height: 22px; }
-            main { margin-top: 80px; padding: 80px 40px; }
-            
-            .retailer-card { 
-                grid-template-columns: 90px 1fr auto; 
-                padding: 25px; 
-            }
+            .retailer-card { grid-template-columns: 90px 1fr auto; padding: 25px; }
             .retailer-logo { width: 60px; height: 60px; }
             .retailer-info { padding-left: 20px; }
             .visit-btn { grid-column: auto; margin-top: 0; padding: 12px 25px; min-width: 140px; }
         }
-
-        /* Brand Identity Colors */
-        .card-sup:hover .visit-btn { background: var(--c-superior); }
-        .card-finn:hover .visit-btn { background: var(--c-finnstyle); }
-        .card-touch:hover .visit-btn { background: var(--c-touch); }
-        .card-ss:hover .visit-btn { background: var(--c-saunastore); }
-        .card-spares:hover .visit-btn { background: var(--c-saunaspares); }
-        .card-kr:hover .visit-btn { background: var(--c-krauta); }
-        .card-pr:hover .visit-btn { background: var(--c-prisma); }
-        .card-gx:hover .visit-btn { background: var(--c-galaxus); }
-        .card-ep:hover .visit-btn { background: var(--c-epharmacy); }
 
         /* --- FOOTER --- */
         footer { padding: 60px 20px; background: #fafafa; border-top: 1px solid #eee; }
@@ -143,23 +159,12 @@
         .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
         .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 10px; font-size: 0.85rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold); }
-        
-        .footer-logo-wrap { 
-            border-top: 1px solid #eee; 
-            padding-top: 40px; 
-            display: flex; 
-            justify-content: right; 
-            align-items: right;
-        } 
+        .footer-logo-wrap { border-top: 1px solid #eee; padding-top: 40px; display: flex; justify-content: center; align-items: right; } 
         .footer-logo-wrap img { width: 140px; }
 
         @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(4, 1fr) 1.5fr; text-align: left; }
-            .footer-logo-wrap { 
-                border-top: none; 
-                padding-top: 0; 
-                justify-content: flex-end; 
-            }
+            .footer-grid { grid-template-columns: repeat(4, 1fr) 1.5fr; text-align: right; }
+            .footer-logo-wrap { border-top: none; padding-top: 0; justify-content: flex-end; }
         }
     </style>
 </head>
@@ -175,28 +180,31 @@
     <div class="lang-container">EN | FI</div>
 </header>
 
+<div class="hero-section">
+    <div class="hero-image-wrapper"></div>
+</div>
+
 <main>
     <div class="page-header">
         <h1>Official Retailers</h1>
     </div>
 
     <div class="region-block">
-
-<h2 class="region-name">🇺🇸 North America</h2>
+        <h2 class="region-name">🇺🇸 North America</h2>
         <div class="retailer-grid">
-            <a href="https://superiorsaunas.com/" class="retailer-card card-sup" target="_blank">
+            <a href="https://superiorsaunas.com/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Superior.jpg" alt="Superior Saunas"></div>
-                <div class="retailer-info"><h3>Superior Saunas</h3><p>USA & Canada</p></div>
+                <div class="retailer-info"><h3>Superior Saunas</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://finnstyle.com/" class="retailer-card card-finn" target="_blank">
+            <a href="https://finnstyle.com/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Finnstyle.jpg" alt="FinnStyle"></div>
-                <div class="retailer-info"><h3>FinnStyle</h3><p>Scandinavian Design</p></div>
+                <div class="retailer-info"><h3>FinnStyle</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.touchoffinland.com/" class="retailer-card card-touch" target="_blank">
+            <a href="https://www.touchoffinland.com/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="TouchOfFinland.jpg" alt="Touch of Finland"></div>
-                <div class="retailer-info"><h3>Touch of Finland</h3><p>Authentic Items</p></div>
+                <div class="retailer-info"><h3>Touch of Finland</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
         </div>
@@ -205,63 +213,60 @@
     <div class="region-block">
         <h2 class="region-name">🇬🇧 United Kingdom</h2>
         <div class="retailer-grid">
-            <a href="https://www.sauna-store.com/" class="retailer-card card-ss" target="_blank">
+            <a href="https://www.sauna-store.com/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="SaunaStoreUK.jpg" alt="Sauna-Store UK"></div>
-                <div class="retailer-info"><h3>Sauna-Store UK</h3><p>Premium Distributor</p></div>
+                <div class="retailer-info"><h3>Sauna-Store UK</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.saunaspares.com/" class="retailer-card card-spares" target="_blank">
+            <a href="https://www.saunaspares.com/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="SaunaSpares.jpg" alt="Sauna Spares"></div>
-                <div class="retailer-info"><h3>Sauna Spares</h3><p>Expert Parts</p></div>
+                <div class="retailer-info"><h3>Sauna Spares</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
         </div>
     </div>
 
     <div class="region-block">
-        <h2 class="region-name">🇫🇮 Finland</h2>
+        <h2 class="region-name">🇪🇺 Europe & 🇫🇮 Finland</h2>
         <div class="retailer-grid">
-            <a href="https://www.k-rauta.fi/" class="retailer-card card-kr" target="_blank">
+            <a href="https://www.k-rauta.fi/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="KRauta.jpg" alt="K-Rauta"></div>
-                <div class="retailer-info"><h3>K-Rauta</h3><p>National Partner</p></div>
+                <div class="retailer-info"><h3>K-Rauta</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.prisma.fi/" class="retailer-card card-pr" target="_blank">
+            <a href="https://www.prisma.fi/" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Prisma.jpg" alt="Prisma"></div>
-                <div class="retailer-info"><h3>Prisma</h3><p>Home Essentials</p></div>
+                <div class="retailer-info"><h3>Prisma</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
+                <div class="visit-btn">Visit Store</div>
+            </a>
+            <a href="https://www.galaxus.de/en" class="retailer-card" target="_blank">
+                <div class="retailer-logo"><img src="Galaxus.jpg" alt="Galaxus"></div>
+
+<div class="retailer-info"><h3>Galaxus</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
+                <div class="visit-btn">Visit Store</div>
+            </a>
+            <a href="https://epharmacy.net/" class="retailer-card" target="_blank">
+                <div class="retailer-logo"><img src="Epharmacy.jpg" alt="ePharmaCY"></div>
+                <div class="retailer-info"><h3>ePharmaCY</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
         </div>
     </div>
 
-    <div class="region-block">
-        <h2 class="region-name">🇪🇺 Europe</h2>
-        <div class="retailer-grid">
-            <a href="https://www.galaxus.de/en" class="retailer-card card-gx" target="_blank">
-                <div class="retailer-logo"><img src="Galaxus.jpg" alt="Galaxus"></div>
-                <div class="retailer-info"><h3>Galaxus</h3><p>Germany & EU</p></div>
-                <div class="visit-btn">Visit Store</div>
-            </a>
-            <a href="https://epharmacy.net/" class="retailer-card card-ep" target="_blank">
-                <div class="retailer-logo"><img src="Epharmacy.jpg" alt="ePharmaCY"></div>
-                <div class="retailer-info"><h3>ePharmaCY</h3><p>Cyprus & South</p></div>
-                <div class="visit-btn">Visit Store</div>
-            </a>
-        </div>
+    <div class="partner-cta">
+        <h2>Want to sell Rento?</h2>
+        <p>Join our global network of quality retailers</p>
+        <a href="partner-application.html" class="partner-link-btn">Become a Partner</a>
     </div>
+
 </main>
 
 <footer>
     <div class="footer-grid">
         <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="retailers.html">Retailers</a></div>
-
-
-<div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
+        <div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
         <div class="footer-col"><h5>Sustainability</h5><a href="materials.html">Materials</a><a href="promise.html">Our Promise</a></div>
-        <div class="footer-col"><h5>Social</h5>
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-        </div>
+        <div class="footer-col"><h5>Social</h5><a href="#">Facebook</a><a href="#">Instagram</a></div>
         <div class="footer-logo-wrap"><img src="Logo.png" alt="Rento"></div>
     </div>
 </footer>
