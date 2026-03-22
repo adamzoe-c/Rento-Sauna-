@@ -11,7 +11,7 @@
             --white: #ffffff; --black: #1a1a1a; --border: rgba(0,0,0,0.05);
             --forest: #080808; 
             --earth: #f7f6f6;  
-            --gold: #2b2ec7;   
+            --gold: #c5a059;   
             --success: #27ae60;
         }
 
@@ -47,14 +47,15 @@
         .hero-section {
             width: 100%;
             max-width: 1200px;
-            margin: 70px auto 0; /* Align below fixed header */
+            margin: 70px auto 0; /* Space for fixed header */
             padding: 20px;
         }
 
         .hero-image-wrapper {
             width: 100%;
-            height: 350px; /* Mobile height */
-            background-image: url('hero-image.jpg');
+            height: 300px; /* Mobile height */
+            /* Ensure the image is in the same folder as this HTML file */
+            background-image: url('hero-image.jpg'); 
             background-size: cover;
             background-position: center;
             border-radius: 12px;
@@ -62,12 +63,12 @@
         }
 
         /* --- CONTENT WRAPPER --- */
-        main { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        main { padding: 20px 20px 40px; max-width: 1000px; margin: 0 auto; }
 
         .page-header { 
             text-align: center; 
-            margin-top: 20px; 
             margin-bottom: 60px; 
+            padding-top: 20px;
         }
         
         .page-header h1 { 
@@ -137,7 +138,6 @@
             border-radius: 4px;
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
         .partner-link-btn:hover { background: var(--gold); transform: translateY(-2px); }
 
@@ -145,7 +145,7 @@
         @media (min-width: 768px) {
             header { height: 80px; }
             .hero-section { margin-top: 100px; padding: 0 40px; }
-            .hero-image-wrapper { height: 500px; }
+            .hero-image-wrapper { height: 500px; } /* Taller image for desktop */
             .main-logo-fixed img { height: 22px; }
             .retailer-card { grid-template-columns: 90px 1fr auto; padding: 25px; }
             .retailer-logo { width: 60px; height: 60px; }
@@ -159,17 +159,16 @@
         .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
         .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 10px; font-size: 0.85rem; transition: 0.3s; }
         .footer-col a:hover { color: var(--gold); }
-        .footer-logo-wrap { border-top: 1px solid #eee; padding-top: 40px; display: flex; justify-content: center; align-items: right; } 
+        .footer-logo-wrap { border-top: 1px solid #eee; padding-top: 40px; display: flex; justify-content: center; align-items: center; } 
         .footer-logo-wrap img { width: 140px; }
 
         @media (min-width: 768px) {
-            .footer-grid { grid-template-columns: repeat(4, 1fr) 1.5fr; text-align: right; }
+            .footer-grid { grid-template-columns: repeat(4, 1fr) 1.5fr; text-align: left; }
             .footer-logo-wrap { border-top: none; padding-top: 0; justify-content: flex-end; }
         }
     </style>
 </head>
 <body>
-
 <header>
     <a href="index.html" class="nav-back">
         <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -241,7 +240,6 @@
             </a>
             <a href="https://www.galaxus.de/en" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Galaxus.jpg" alt="Galaxus"></div>
-
 <div class="retailer-info"><h3>Galaxus</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
