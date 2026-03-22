@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Retailers | Rento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --white: #ffffff; --black: #1a1a1a; --border: rgba(0,0,0,0.05);
+            --forest: #080808; 
+            --earth: #f7f6f6;  
+            --gold: #1c2b59;   
+            /* Updated to Tammer Brands Navy Blue */
+            --tammer-blue: #1c2b59; 
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Cormorant Garamond', serif; 
+            background: var(--earth); 
+            color: var(--black); 
+            line-height: 1.6; 
+            -webkit-font-smoothing: antialiased; 
+        }
+
+        /* --- HEADER --- */
+        header { 
+            height: 90px; width: 100%; display: grid; 
+            grid-template-columns: 60px 1fr 60px; align-items: center; 
+            padding: 0 20px; position: fixed; top: 0; 
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            z-index: 2000; border-bottom: 1px solid var(--border); 
+        }
+
+        .nav-back { grid-column: 1; display: flex; align-items: center; text-decoration: none; color: #000; transition: 0.3s; }
+        .nav-back:hover { color: var(--gold); transform: translateX(-3px); }
+        .nav-back svg { width: 24px; height: 24px; stroke-width: 1.5px; stroke: currentColor; fill: none; }
+        
+        .main-logo-fixed { grid-column: 2; display: flex; justify-content: center; align-items: center; }
+        .main-logo-fixed img { height: 30px; cursor: pointer; }
+
+        @media (min-width: 768px) {
+            header { height: 100px; }
+            .main-logo-fixed img { height: 42px; }
+        }
+.lang-container { grid-column: 3; display: flex; justify-content: flex-end; font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 700; color: var(--forest); }
+        /* --- HERO SECTION --- */
+        .retail-hero {
+            width: 100%;
+            height: 400px;
+            margin-top: 90px;
+            /* Using showroom image 24.jpg */
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('24.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .retail-hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 300; font-style: italic; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+        /* --- CONTENT WRAPPER --- */
+        main { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 80px; }
+        .intro-text p { font-size: 1.4rem; color: #444; margin-bottom: 20px; }
+
+        /* --- BENEFITS GRID --- */
+        .benefits-title { text-align: center; margin-bottom: 40px; font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
+        
+        .benefits-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 100px;
+        }
+
+        .benefit-card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 4px; 
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+        .benefit-card:hover { border-bottom: 3px solid var(--gold); transform: translateY(-5px); }
+        .benefit-card h4 { font-family: 'Montserrat'; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; color: var(--forest); }
+        .benefit-card p { font-size: 1.1rem; color: #666; }
+
+/* --- INFO SECTIONS --- */
+        .info-split { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 60px; 
+            margin-bottom: 80px;
+        }
+        
+        @media (min-width: 768px) { .info-split { grid-template-columns: 1fr 1fr; } }
+
+        .info-block h2 { font-size: 2.5rem; font-weight: 300; margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .info-block p { font-family: 'Montserrat'; font-size: 0.85rem; margin-bottom: 15px; color: #555; line-height: 1.8; }
+        .info-block strong { color: var(--black); }
+
+        /* --- TAMMER BLUE CTA BOX --- */
+        .cta-box {
+            background: var(--tammer-blue);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(28, 43, 89, 0.2);
+        }
+        .cta-box h3 { font-size: 2.2rem; font-weight: 300; margin-bottom: 20px; }
+        .cta-link { 
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--white); 
+            text-decoration: none; 
+            font-family: 'Montserrat'; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 15px 30px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .cta-link:hover { background: var(--white); color: var(--tammer-blue); }
+
+        /* --- FOOTER --- */
+        footer { padding: 60px 20px; background: #fafafa; border-top: 1px solid #eee; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        .footer-col h5 { font-family: 'Montserrat'; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+        .footer-col a { display: block; color: #777; text-decoration: none; margin-bottom: 10px; font-size: 0.85rem; transition: 0.3s; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-logo-wrap { display: flex; justify-content: center; align-items: center; } 
+        .footer-logo-wrap img { width: 140px; }
+
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: repeat(4, 1fr) 1.5fr; text-align: left; }
+            .footer-logo-wrap { justify-content: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </a>
+    <div class="main-logo-fixed">
+        <img src="Logo.png" alt="Rento" onclick="location.href='index.html'">
+    </div>
+    <div class="lang-container">EN | FI</div>
+</header>
+
+<div class="retail-hero">
+    <h1>For Retailers</h1>
+</div>
+
+<main>
+    <div class="intro-text">
+        <p>The packaging design and stylish appearance of the Rento product range encourage customers to take a closer look at the products.</p>
+        <p>We offer a complete range of sauna accessories and create quality that is evident in our packaging, products, and ease of use.</p>
+    </div>
+
+    <h3 class="benefits-title">As a Rento retailer you get</h3>
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <h4>Full Range</h4>
+            <p>A full range of modern and innovative sauna products for all senses.</p>
+        </div>
+        <div class="benefit-card">
+            <h4>Global Ready</h4>
+            <p>Commercial product packaging available in ten languages.</p>
+        </div>
+        <div class="benefit-card">
+            <h4>In-Store Support</h4>
+            <p>Ready-made stands, display solutions, and marketing materials for maximum visibility.</p>
+        </div>
+        <div class="benefit-card">
+            <h4>Advertising</h4>
+            <p>In store marketing materials give you extra visiblitiy in your store environment.</p>
+        </div>
+        <div class="benefit-card">
+            <h4>Digital Assets</h4>
+            <p>High-resolution images, logos, and technical data for your online store.</p>
+        </div>
+        <div class="benefit-card">
+            <h4>Marketing</h4>
+            <p>Our multi-channel brand marketing increasws product awareness and demand.</p>
+        </div>
+    </div>
+
+<div class="info-split">
+        <div class="info-block">
+            <h2>Contact Us</h2>
+            <p>Rento products are manufactured by <strong>RentoSauna</strong>, which is a trade name owned by <strong>Tammer Brands Ltd.</strong></p>
+            <p>
+                <strong>Tammer Brands Ltd</strong><br>
+                PL 107, 33101 Tampere<br>
+                +358 3 252 1111<br>
+                <a href="mailto:tammerbrands@tammerbrands.fi" style="color:inherit">tammerbrands@tammerbrands.fi</a><br>
+                <a href="https://www.tammerbrands.fi/en" target="_blank" style="color:var(--gold)">www.tammerbrands.fi/en</a>
+            </p>
+            <p>Retailers are served Mon-Fri from 8 am to 4 pm (UTC+2)</p>
+        </div>
+
+        <div class="info-block">
+            <h2>Sales & Showroom</h2>
+            <p>The best way to get to know our selection is to visit our <strong>11,000 m2 showroom</strong> in Tampere, featuring over 20,000 products.</p>
+            <p>Our sales exhibition is open by appointment. Contact us to arrange a time for your visit!</p>
+            <p>
+                <strong>Showroom, Tampere</strong><br>
+                Viinikankatu 36, TAMPERE<br>
+                +358 3 252 1111
+            </p>
+        </div>
+    </div>
+
+    <div class="cta-box">
+        <h3>Design your range with us</h3>
+        <p>Together we will design a product range tailored to your needs.</p>
+        <a href="https://www.tammerbrands.fi/en/become-a-customer/" class="cta-link">Become a Tammer Brands’ customer »</a>
+    </div>
+
+    <div class="info-block" style="text-align: center; margin-top: 80px;">
+        <h2>Logo and images</h2>
+        <p>You can download Rento logo materials and brand images to support your marketing from the Media Gallery.</p>
+        <a href="media.html" style="font-family: 'Montserrat'; font-size: 0.75rem; color: var(--black); text-decoration: none; font-weight: 700; text-transform: uppercase;">Visit Media Gallery »</a>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="forretailers.html">For Retailers </a><a href="retailers.html">Our Parteners</a></div>
+        <div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
+        <div class="footer-col"><h5>Sustainability</h5><a href="materials.html">Materials</a><a href="promise.html">Our Promise</a></div>
+        <div class="footer-col"><h5>Social</h5>
+            <a href="https://www.facebook.com/share/1FWH2khvzU/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/rentosauna?igsh=MWRuM3ZiNGg0dnE3eQ==" target="_blank">Instagram</a>
+        </div>
+        <div class="footer-logo-wrap"><img src="Logo.png" alt="Rento"></div>
+    </div>
+</footer>
+
+</body>
+</html>

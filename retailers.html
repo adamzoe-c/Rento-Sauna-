@@ -11,7 +11,7 @@
             --white: #ffffff; --black: #1a1a1a; --border: rgba(0,0,0,0.05);
             --forest: #080808; 
             --earth: #f7f6f6;  
-            --gold: #c5a059;   
+            --gold: #0b6bda;   
             --success: #27ae60;
         }
 
@@ -27,7 +27,7 @@
 
         /* --- HEADER --- */
         header { 
-            height: 70px; width: 100%; display: grid; 
+            height: 90px; width: 100%; display: grid; 
             grid-template-columns: 60px 1fr 60px; align-items: center; 
             padding: 0 20px; position: fixed; top: 0; 
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
@@ -36,25 +36,26 @@
 
         .nav-back { grid-column: 1; display: flex; align-items: center; text-decoration: none; color: #000; transition: 0.3s; }
         .nav-back:hover { color: var(--gold); transform: translateX(-3px); }
-        .nav-back svg { width: 22px; height: 22px; stroke-width: 1.5px; stroke: currentColor; fill: none; }
+        .nav-back svg { width: 24px; height: 24px; stroke-width: 1.5px; stroke: currentColor; fill: none; }
         
         .main-logo-fixed { grid-column: 2; display: flex; justify-content: center; align-items: center; }
-        .main-logo-fixed img { height: 18px; cursor: pointer; }
+        /* Logo Made Bigger */
+        .main-logo-fixed img { height: 30px; cursor: pointer; transition: 0.3s; }
+        .main-logo-fixed img:hover { opacity: 0.7; }
         
-        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; font-family: 'Montserrat'; font-size: 0.65rem; font-weight: 700; color: var(--forest); }
+        .lang-container { grid-column: 3; display: flex; justify-content: flex-end; font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 700; color: var(--forest); }
 
         /* --- HERO SECTION --- */
         .hero-section {
             width: 100%;
             max-width: 1200px;
-            margin: 70px auto 0; /* Space for fixed header */
+            margin: 90px auto 0; 
             padding: 20px;
         }
 
         .hero-image-wrapper {
             width: 100%;
-            height: 300px; /* Mobile height */
-            /* Ensure the image is in the same folder as this HTML file */
+            height: 300px; 
             background-image: url('hero-image.jpg'); 
             background-size: cover;
             background-position: center;
@@ -65,20 +66,8 @@
         /* --- CONTENT WRAPPER --- */
         main { padding: 20px 20px 40px; max-width: 1000px; margin: 0 auto; }
 
-        .page-header { 
-            text-align: center; 
-            margin-bottom: 60px; 
-            padding-top: 20px;
-        }
-        
-        .page-header h1 { 
-            font-size: clamp(2.2rem, 6vw, 5rem); 
-            font-weight: 300; 
-            font-style: italic; 
-            color: var(--forest); 
-            line-height: 1.1; 
-            letter-spacing: -1px;
-        }
+        .page-header { text-align: center; margin-bottom: 60px; padding-top: 20px; }
+        .page-header h1 { font-size: clamp(2.2rem, 6vw, 5rem); font-weight: 300; font-style: italic; color: var(--forest); line-height: 1.1; letter-spacing: -1px; }
 
         /* REGION BLOCKS */
         .region-block { margin-bottom: 60px; }
@@ -97,6 +86,7 @@
             text-decoration: none; color: inherit; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
+
 .retailer-card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
         .retailer-logo { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
         .retailer-logo img { width: 100%; height: auto; object-fit: contain; }
@@ -117,36 +107,24 @@
 
         /* --- BECOME A PARTNER SECTION --- */
         .partner-cta {
-            margin: 40px 0;
-            padding: 50px 20px;
-            background: var(--white);
-            border: 1px dashed #ddd;
-            border-radius: 12px;
-            text-align: center;
+            margin: 40px 0; padding: 50px 20px; background: var(--white);
+            border: 1px dashed #ddd; border-radius: 12px; text-align: center;
         }
         .partner-cta h2 { font-family: 'Cormorant Garamond'; font-size: 2.2rem; font-weight: 300; margin-bottom: 10px; }
         .partner-cta p { font-family: 'Montserrat'; font-size: 0.75rem; color: #777; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
         .partner-link-btn {
-            display: inline-block;
-            background: var(--forest);
-            color: white;
-            text-decoration: none;
-            font-family: 'Montserrat';
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 16px 45px;
-            border-radius: 4px;
-            transition: 0.3s;
-            text-transform: uppercase;
+            display: inline-block; background: var(--forest); color: white; text-decoration: none;
+            font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 700; padding: 16px 45px;
+            border-radius: 4px; transition: 0.3s; text-transform: uppercase;
         }
         .partner-link-btn:hover { background: var(--gold); transform: translateY(-2px); }
 
         /* --- DESKTOP ADJUSTMENTS --- */
         @media (min-width: 768px) {
-            header { height: 80px; }
+            header { height: 100px; }
             .hero-section { margin-top: 100px; padding: 0 40px; }
-            .hero-image-wrapper { height: 500px; } /* Taller image for desktop */
-            .main-logo-fixed img { height: 22px; }
+            .hero-image-wrapper { height: 500px; }
+            .main-logo-fixed img { height: 42px; }
             .retailer-card { grid-template-columns: 90px 1fr auto; padding: 25px; }
             .retailer-logo { width: 60px; height: 60px; }
             .retailer-info { padding-left: 20px; }
@@ -169,6 +147,7 @@
     </style>
 </head>
 <body>
+
 <header>
     <a href="index.html" class="nav-back">
         <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -191,17 +170,17 @@
     <div class="region-block">
         <h2 class="region-name">🇺🇸 North America</h2>
         <div class="retailer-grid">
-            <a href="https://superiorsaunas.com/" class="retailer-card" target="_blank">
+            <a href="https://superiorsaunas.com/search?q=Rento+Sauna&type=product%2Carticle%2Cpage%2Ccollection&options%5Bprefix%5D=last" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Superior.jpg" alt="Superior Saunas"></div>
                 <div class="retailer-info"><h3>Superior Saunas</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://finnstyle.com/" class="retailer-card" target="_blank">
+            <a href="https://finnstyle.com/collections/rentosauna?_pos=1&_psq=Rento&_ss=e&_v=1.0" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Finnstyle.jpg" alt="FinnStyle"></div>
                 <div class="retailer-info"><h3>FinnStyle</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.touchoffinland.com/" class="retailer-card" target="_blank">
+            <a href="https://www.touchoffinland.com/pages/search-results-page?q=Rento" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="TouchOfFinland.jpg" alt="Touch of Finland"></div>
                 <div class="retailer-info"><h3>Touch of Finland</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
@@ -212,12 +191,12 @@
     <div class="region-block">
         <h2 class="region-name">🇬🇧 United Kingdom</h2>
         <div class="retailer-grid">
-            <a href="https://www.sauna-store.com/" class="retailer-card" target="_blank">
+            <a href="https://www.sauna-store.com/search/?q=Rento" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="SaunaStoreUK.jpg" alt="Sauna-Store UK"></div>
                 <div class="retailer-info"><h3>Sauna-Store UK</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.saunaspares.com/" class="retailer-card" target="_blank">
+            <a href="https://www.saunaspares.com/search/?q=Rento" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="SaunaSpares.jpg" alt="Sauna Spares"></div>
                 <div class="retailer-info"><h3>Sauna Spares</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
@@ -228,22 +207,23 @@
     <div class="region-block">
         <h2 class="region-name">🇪🇺 Europe & 🇫🇮 Finland</h2>
         <div class="retailer-grid">
-            <a href="https://www.k-rauta.fi/" class="retailer-card" target="_blank">
+            <a href="https://www.k-rauta.fi/etsi?query=Rento" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="KRauta.jpg" alt="K-Rauta"></div>
                 <div class="retailer-info"><h3>K-Rauta</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.prisma.fi/" class="retailer-card" target="_blank">
+            <a href="https://www.prisma.fi/haku?search=Rento%20Sauna" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Prisma.jpg" alt="Prisma"></div>
                 <div class="retailer-info"><h3>Prisma</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://www.galaxus.de/en" class="retailer-card" target="_blank">
+            <a href="https://www.galaxus.de/en/search?q=Rento%20Sauna" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Galaxus.jpg" alt="Galaxus"></div>
-<div class="retailer-info"><h3>Galaxus</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
-                <div class="visit-btn">Visit Store</div>
+                <div class="retailer-info"><h3>Galaxus</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
+
+<div class="visit-btn">Visit Store</div>
             </a>
-            <a href="https://epharmacy.net/" class="retailer-card" target="_blank">
+            <a href="https://epharmacy.net/pages/search-results-page?q=rento%20sauna&tab=products&page=2" class="retailer-card" target="_blank">
                 <div class="retailer-logo"><img src="Epharmacy.jpg" alt="ePharmaCY"></div>
                 <div class="retailer-info"><h3>ePharmaCY</h3><div class="stock-status"><span class="dot"></span> IN STOCK</div></div>
                 <div class="visit-btn">Visit Store</div>
@@ -261,10 +241,13 @@
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="retailers.html">Retailers</a></div>
+        <div class="footer-col"><h5>Service</h5><a href="customer-service.html">Customer Service</a><a href="forretailers.html">For Retailers </a><a href="retailers.html">Our Parteners</a></div>
         <div class="footer-col"><h5>Press</h5><a href="media.html">For Media</a><a href="imagery.html">Imagery</a></div>
         <div class="footer-col"><h5>Sustainability</h5><a href="materials.html">Materials</a><a href="promise.html">Our Promise</a></div>
-        <div class="footer-col"><h5>Social</h5><a href="#">Facebook</a><a href="#">Instagram</a></div>
+        <div class="footer-col"><h5>Social</h5>
+            <a href="https://www.facebook.com/share/1FWH2khvzU/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/rentosauna?igsh=MWRuM3ZiNGg0dnE3eQ==" target="_blank">Instagram</a>
+        </div>
         <div class="footer-logo-wrap"><img src="Logo.png" alt="Rento"></div>
     </div>
 </footer>
